@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,24 +10,30 @@
             box-sizing: border-box;
         }
         
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
         }
         
         @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-30px); }
+            from { opacity: 0; transform: translateX(-50px); }
             to { opacity: 1; transform: translateX(0); }
         }
         
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.08); }
         }
         
         @keyframes gradient {
@@ -36,227 +42,304 @@
             100% { background-position: 0% 50%; }
         }
         
-        .float-animation { animation: float 3s ease-in-out infinite; }
-        .slide-in { animation: slideIn 0.6s ease-out; }
-        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
-        .pulse-hover:hover { animation: pulse 0.3s ease-in-out; }
-        
-        .gradient-bg {
-            background: linear-gradient(-45deg, #667eea, #764ba2, #6a5acd, #4169e1, #9370db, #8a2be2, #7b68ee);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
         }
         
-        .card-hover {
-            transition: all 0.3s ease;
+        @keyframes neon {
+            0%, 100% { text-shadow: 0 0 10px rgba(139, 92, 246, 0.8), 0 0 20px rgba(139, 92, 246, 0.6); }
+            50% { text-shadow: 0 0 20px rgba(139, 92, 246, 1), 0 0 30px rgba(139, 92, 246, 0.8); }
         }
         
-        .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
+        .float-animation { animation: float 4s ease-in-out infinite; }
+        .slide-in { animation: slideIn 0.8s ease-out; }
+        .fade-in-up { animation: fadeInUp 1s ease-out; }
+        .pulse-hover:hover { animation: pulse 0.4s ease-in-out; }
+        .glow-effect { animation: glow 3s ease-in-out infinite; }
+        .neon-text { animation: neon 2s ease-in-out infinite; }
         
-        .lesson-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border-left: 4px solid #ff6b6b;
-            border-image: linear-gradient(135deg, #ff6b6b, #4ecdc4) 1;
-        }
-        
-        .lesson-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .price-highlight {
-            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .testimonial-card {
-            background: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stats-counter {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .feature-icon {
-            width: 4rem;
-            height: 4rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            margin: 0 auto 1rem;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-        }
-        
-        .timeline-item {
+        .futuristic-bg {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
             position: relative;
-            padding-left: 2rem;
-            margin-bottom: 2rem;
+            min-height: 100vh;
         }
         
-        .timeline-item::before {
+        .futuristic-bg::before {
             content: '';
             position: absolute;
+            top: 0;
             left: 0;
-            top: 0.5rem;
-            width: 1rem;
-            height: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
         }
         
-        .timeline-item::after {
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+        }
+        
+        .neon-border {
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #8b5cf6, #3b82f6, #8b5cf6) border-box;
+            border-radius: 15px;
+            position: relative;
+        }
+        
+        .neon-border::before {
             content: '';
             position: absolute;
-            left: 0.375rem;
-            top: 1.5rem;
-            width: 0.25rem;
-            height: calc(100% - 1rem);
-            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+            inset: 0;
+            padding: 2px;
+            background: linear-gradient(45deg, #8b5cf6, #3b82f6, #a855f7);
+            border-radius: inherit;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
         }
         
-        .timeline-item:last-child::after {
-            display: none;
+        .holographic {
+            background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b);
+            background-size: 300% 300%;
+            animation: gradient 4s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
+        
+        .cyber-button {
+            background: linear-gradient(45deg, #8b5cf6, #3b82f6);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+        
+        .cyber-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+        
+        .mobile-friendly {
+            padding: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-friendly {
+                padding: 0.5rem;
+            }
+            
+            .glass-card {
+                margin: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .text-6xl {
+                font-size: 2.5rem;
+            }
+            
+            .text-5xl {
+                font-size: 2rem;
+            }
+            
+            .text-4xl {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .particle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.6);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 1s; }
+        .particle:nth-child(3) { top: 80%; left: 20%; animation-delay: 2s; }
+        .particle:nth-child(4) { top: 30%; left: 70%; animation-delay: 3s; }
+        .particle:nth-child(5) { top: 70%; left: 50%; animation-delay: 4s; }
     </style>
 </head>
-<body class="h-full bg-gray-50">
+<body class="futuristic-bg">
+    <!-- Particle Background -->
+    <div class="particle-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
     <!-- Header -->
-    <header class="gradient-bg text-white shadow-lg sticky top-0 z-40">
-        <nav class="container mx-auto px-6 py-4">
+    <header class="glass-card sticky top-4 z-50 mx-4 mobile-friendly relative">
+        <nav class="px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3 slide-in">
-                    <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center float-animation">
-                        <span class="text-2xl">🎨</span>
+                    <div class="w-12 h-12 glass-card glow-effect flex items-center justify-center float-animation">
+                        <span class="text-2xl">🚀</span>
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold">Canva Mastery</h1>
-                        <p class="text-sm opacity-90">Design Like a Pro</p>
+                        <h1 class="text-xl sm:text-2xl font-bold text-white neon-text">Canva Mastery</h1>
+                        <p class="text-xs sm:text-sm text-purple-300">Design Like a Pro ✨</p>
                     </div>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#course" class="hover:text-purple-200 transition-colors">Course Details</a>
-                    <a href="#curriculum" class="hover:text-purple-200 transition-colors">Curriculum</a>
-                    <a href="#instructor" class="hover:text-purple-200 transition-colors">Instructor</a>
-                    <a href="#testimonials" class="hover:text-purple-200 transition-colors">Reviews</a>
-                    <a href="#pricing" class="hover:text-purple-200 transition-colors">Pricing</a>
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden glass-card p-2 text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                
+                <div id="desktopMenu" class="hidden md:flex items-center space-x-6">
+                    <a href="#course" class="text-purple-200 hover:text-white transition-colors text-sm font-medium">Course</a>
+                    <a href="#curriculum" class="text-purple-200 hover:text-white transition-colors text-sm font-medium">Curriculum</a>
+                    <a href="#instructor" class="text-purple-200 hover:text-white transition-colors text-sm font-medium">Instructor</a>
+                    <a href="#testimonials" class="text-purple-200 hover:text-white transition-colors text-sm font-medium">Reviews</a>
+                    <a href="#pricing" class="text-purple-200 hover:text-white transition-colors text-sm font-medium">Pricing</a>
                 </div>
                 
-                <button onclick="scrollToEnroll()" class="bg-white text-purple-600 px-6 py-2 rounded-full font-semibold hover:bg-purple-50 transition-colors pulse-hover">
-                    Enroll Now
+                <button onclick="scrollToEnroll()" class="hidden md:block cyber-button text-white px-6 py-2 rounded-full font-semibold pulse-hover">
+                    Join Now 🚀
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#course" class="block text-purple-200 hover:text-white transition-colors py-2 text-sm">Course Details</a>
+                <a href="#curriculum" class="block text-purple-200 hover:text-white transition-colors py-2 text-sm">Curriculum</a>
+                <a href="#instructor" class="block text-purple-200 hover:text-white transition-colors py-2 text-sm">Instructor</a>
+                <a href="#testimonials" class="block text-purple-200 hover:text-white transition-colors py-2 text-sm">Reviews</a>
+                <a href="#pricing" class="block text-purple-200 hover:text-white transition-colors py-2 text-sm">Pricing</a>
+                <button onclick="scrollToEnroll()" class="w-full cyber-button text-white px-4 py-2 rounded-full font-semibold mt-4">
+                    Join Now 🚀
                 </button>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main class="relative z-10">
         <!-- Hero Section -->
-        <section class="gradient-bg text-white py-20">
-            <div class="container mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <section class="py-12 sm:py-20 mobile-friendly relative">
+            <div class="container mx-auto px-4 sm:px-6 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     <div class="text-left">
-                        <div class="inline-block bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 fade-in-up">
-                            <span class="text-sm font-semibold">🔥 Limited Time Offer - 60% OFF</span>
+                        <div class="inline-block glass-card px-4 py-2 rounded-full mb-6 fade-in-up glow-effect">
+                            <span class="text-sm font-semibold text-white">🔥 Limited Time - 60% OFF</span>
                         </div>
-                        <h2 class="text-6xl font-bold mb-6 fade-in-up">Master Canva in Just <span class="text-blue-200" style="text-shadow: 0 0 20px rgba(135, 206, 250, 0.6);">7 Days</span></h2>
-                        <p class="text-xl mb-8 fade-in-up opacity-90">Transform from beginner to Canva expert with our comprehensive course. Create stunning designs for social media, marketing, and business.</p>
+                        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 fade-in-up text-white">Master Canva in Just <span class="holographic neon-text">7 Days</span></h2>
+                        <p class="text-lg sm:text-xl mb-8 fade-in-up text-purple-100 leading-relaxed">Transform from beginner to Canva expert with our comprehensive course. Create stunning designs for social media, marketing, and business. 🎨✨</p>
                         
-                        <div class="flex flex-wrap gap-4 mb-8 fade-in-up">
-                            <div class="flex items-center space-x-2 bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full">
-                                <span class="text-yellow-300">⭐</span>
-                                <span class="font-semibold">4.9/5 Rating</span>
+                        <div class="flex flex-wrap gap-3 mb-8 fade-in-up">
+                            <div class="flex items-center space-x-2 glass-card px-3 sm:px-4 py-2 rounded-full">
+                                <span class="text-yellow-400">⭐</span>
+                                <span class="font-semibold text-white text-sm">4.9/5 Rating</span>
                             </div>
-                            <div class="flex items-center space-x-2 bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full">
-                                <span class="text-green-300">👥</span>
-                                <span class="font-semibold">5000+ Students</span>
+                            <div class="flex items-center space-x-2 glass-card px-3 sm:px-4 py-2 rounded-full">
+                                <span class="text-green-400">👥</span>
+                                <span class="font-semibold text-white text-sm">5000+ Students</span>
                             </div>
-                            <div class="flex items-center space-x-2 bg-white bg-opacity-20 backdrop-blur-sm px-4 py-2 rounded-full">
-                                <span class="text-blue-300">🎓</span>
-                                <span class="font-semibold">Certificate Included</span>
+                            <div class="flex items-center space-x-2 glass-card px-3 sm:px-4 py-2 rounded-full">
+                                <span class="text-blue-400">🎓</span>
+                                <span class="font-semibold text-white text-sm">Certificate Included</span>
                             </div>
                         </div>
                         
-                        <div class="flex space-x-4 mb-8">
-                            <button onclick="scrollToEnroll()" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-blue-400 hover:to-purple-500 transition-all pulse-hover shadow-lg" style="box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);">
-                                Enroll Now - ₹499 Only
+                        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                            <button onclick="scrollToEnroll()" class="cyber-button text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg pulse-hover glow-effect">
+                                🚀 Join Now - ₹499 Only
                             </button>
-                            <button onclick="downloadEbook()" class="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-gradient-to-r hover:from-pink-400 hover:to-purple-400 hover:border-transparent transition-all shadow-lg">
-                                Free Ebook Guide
+                            <button onclick="downloadEbook()" class="glass-card text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold hover:bg-white hover:bg-opacity-10 transition-all">
+                                📚 Free Guide
                             </button>
                         </div>
                         
-                        <div class="flex items-center space-x-6 text-sm opacity-90">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-sm text-purple-200">
                             <div class="flex items-center space-x-2">
-                                <span class="text-green-300">✓</span>
-                                <span>30-Day Money Back Guarantee</span>
+                                <span class="text-green-400">✓</span>
+                                <span>Instant Access</span>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <span class="text-green-300">✓</span>
+                                <span class="text-green-400">✓</span>
                                 <span>Lifetime Access</span>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Hero Visual -->
-                    <div class="relative">
-                        <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-3xl p-8 float-animation">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-gradient-to-br from-purple-400 via-blue-400 to-indigo-500 rounded-2xl p-6 text-center shadow-xl" style="box-shadow: 0 15px 35px rgba(147, 112, 219, 0.3);">
-                                    <div class="text-4xl mb-2">📱</div>
-                                    <h4 class="font-bold">Social Media</h4>
-                                    <p class="text-sm opacity-90">Instagram, Facebook, Twitter</p>
+                    <div class="relative mt-8 lg:mt-0">
+                        <div class="glass-card p-6 sm:p-8 float-animation">
+                            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                                <div class="glass-card glow-effect p-4 sm:p-6 text-center">
+                                    <div class="text-3xl sm:text-4xl mb-2">📱</div>
+                                    <h4 class="font-bold text-white text-sm sm:text-base">Social Media</h4>
+                                    <p class="text-xs sm:text-sm text-purple-200">Instagram, Facebook, Twitter</p>
                                 </div>
-                                <div class="bg-gradient-to-br from-blue-500 via-purple-500 to-indigo-600 rounded-2xl p-6 text-center shadow-xl" style="box-shadow: 0 15px 35px rgba(79, 70, 229, 0.3);">
-                                    <div class="text-4xl mb-2">💼</div>
-                                    <h4 class="font-bold">Business</h4>
-                                    <p class="text-sm opacity-90">Presentations, Logos</p>
+                                <div class="glass-card glow-effect p-4 sm:p-6 text-center" style="animation-delay: 0.2s;">
+                                    <div class="text-3xl sm:text-4xl mb-2">💼</div>
+                                    <h4 class="font-bold text-white text-sm sm:text-base">Business</h4>
+                                    <p class="text-xs sm:text-sm text-purple-200">Presentations, Logos</p>
                                 </div>
-                                <div class="bg-gradient-to-br from-indigo-400 via-purple-400 to-blue-500 rounded-2xl p-6 text-center shadow-xl" style="box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);">
-                                    <div class="text-4xl mb-2">📊</div>
-                                    <h4 class="font-bold">Marketing</h4>
-                                    <p class="text-sm opacity-90">Ads, Banners, Flyers</p>
+                                <div class="glass-card glow-effect p-4 sm:p-6 text-center" style="animation-delay: 0.4s;">
+                                    <div class="text-3xl sm:text-4xl mb-2">📊</div>
+                                    <h4 class="font-bold text-white text-sm sm:text-base">Marketing</h4>
+                                    <p class="text-xs sm:text-sm text-purple-200">Ads, Banners, Flyers</p>
                                 </div>
-                                <div class="bg-gradient-to-br from-purple-500 via-blue-500 to-indigo-600 rounded-2xl p-6 text-center shadow-xl" style="box-shadow: 0 15px 35px rgba(138, 43, 226, 0.3);">
-                                    <div class="text-4xl mb-2">🎨</div>
-                                    <h4 class="font-bold">Creative</h4>
-                                    <p class="text-sm opacity-90">Posters, Invitations</p>
+                                <div class="glass-card glow-effect p-4 sm:p-6 text-center" style="animation-delay: 0.6s;">
+                                    <div class="text-3xl sm:text-4xl mb-2">🎨</div>
+                                    <h4 class="font-bold text-white text-sm sm:text-base">Creative</h4>
+                                    <p class="text-xs sm:text-sm text-purple-200">Posters, Invitations</p>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- Floating Elements -->
-                        <div class="absolute -top-4 -right-4 bg-gradient-to-r from-blue-400 to-purple-500 text-white px-4 py-2 rounded-full font-bold float-animation shadow-lg" style="animation-delay: 0.5s; box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);">
-                            Live Classes!
+                        <div class="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 cyber-button text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full font-bold float-animation text-xs sm:text-sm glow-effect" style="animation-delay: 0.5s;">
+                            ⚡ Live Classes!
                         </div>
-                        <div class="absolute -bottom-4 -left-4 bg-gradient-to-r from-purple-400 to-blue-500 text-white px-4 py-2 rounded-full font-bold float-animation shadow-lg" style="animation-delay: 1s; box-shadow: 0 8px 25px rgba(147, 112, 219, 0.4);">
-                            Hands-on Projects!
+                        <div class="absolute -bottom-2 sm:-bottom-4 -left-2 sm:-left-4 cyber-button text-white px-3 sm:px-4 py-1 sm:py-2 rounded-full font-bold float-animation text-xs sm:text-sm glow-effect" style="animation-delay: 1s;">
+                            🎯 Hands-on Projects!
                         </div>
                     </div>
                 </div>
@@ -264,109 +347,109 @@
         </section>
 
         <!-- Stats Section -->
-        <section class="py-16 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-4 gap-8 text-center">
-                    <div class="fade-in-up">
-                        <div class="stats-counter" data-target="5000">0</div>
-                        <p class="text-gray-600 font-semibold">Happy Students</p>
+        <section class="py-12 sm:py-16 mobile-friendly">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
+                    <div class="glass-card p-4 sm:p-6 text-center fade-in-up glow-effect">
+                        <div class="holographic text-3xl sm:text-4xl font-bold mb-2" data-target="5000">0</div>
+                        <p class="text-purple-200 font-semibold text-sm sm:text-base">Happy Students 😊</p>
                     </div>
-                    <div class="fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="stats-counter" data-target="7">0</div>
-                        <p class="text-gray-600 font-semibold">Video Lessons</p>
+                    <div class="glass-card p-4 sm:p-6 text-center fade-in-up glow-effect" style="animation-delay: 0.2s;">
+                        <div class="holographic text-3xl sm:text-4xl font-bold mb-2" data-target="7">0</div>
+                        <p class="text-purple-200 font-semibold text-sm sm:text-base">Video Lessons 🎥</p>
                     </div>
-                    <div class="fade-in-up" style="animation-delay: 0.4s;">
-                        <div class="stats-counter" data-target="7">0</div>
-                        <p class="text-gray-600 font-semibold">Days Duration</p>
+                    <div class="glass-card p-4 sm:p-6 text-center fade-in-up glow-effect" style="animation-delay: 0.4s;">
+                        <div class="holographic text-3xl sm:text-4xl font-bold mb-2" data-target="7">0</div>
+                        <p class="text-purple-200 font-semibold text-sm sm:text-base">Days Duration ⏰</p>
                     </div>
-                    <div class="fade-in-up" style="animation-delay: 0.6s;">
-                        <div class="stats-counter" data-target="100">0</div>
-                        <p class="text-gray-600 font-semibold">Design Templates</p>
+                    <div class="glass-card p-4 sm:p-6 text-center fade-in-up glow-effect" style="animation-delay: 0.6s;">
+                        <div class="holographic text-3xl sm:text-4xl font-bold mb-2" data-target="50">0</div>
+                        <p class="text-purple-200 font-semibold text-sm sm:text-base">Templates 🎨</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Course Overview -->
-        <section id="course" class="py-20 bg-gray-50">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h3 class="text-5xl font-bold mb-4 text-gray-800">Course Overview</h3>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Everything you need to become a Canva design expert, from basics to advanced techniques</p>
+        <section id="course" class="py-12 sm:py-20 mobile-friendly">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16">
+                    <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white holographic">Course Overview ✨</h3>
+                    <p class="text-lg sm:text-xl text-purple-100 max-w-3xl mx-auto">Everything you need to become a Canva design expert, from basics to advanced techniques 🚀</p>
                 </div>
                 
-                <div class="grid lg:grid-cols-3 gap-8">
+                <div class="grid lg:grid-cols-3 gap-6 sm:gap-8">
                     <!-- Course Duration -->
-                    <div class="bg-white rounded-2xl p-8 card-hover fade-in-up">
-                        <div class="feature-icon">⏰</div>
-                        <h4 class="text-2xl font-bold text-center mb-4 text-gray-800">Duration & Schedule</h4>
-                        <div class="space-y-4">
+                    <div class="glass-card p-6 sm:p-8 fade-in-up glow-effect">
+                        <div class="w-16 h-16 cyber-button rounded-2xl flex items-center justify-center text-2xl text-white mx-auto mb-4 glow-effect">⏰</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-center mb-4 text-white">Duration & Schedule</h4>
+                        <div class="space-y-3 sm:space-y-4">
                             <div class="flex justify-between items-center">
-                                <span class="text-gray-600">Total Duration:</span>
-                                <span class="font-bold text-purple-600">7 Days</span>
+                                <span class="text-purple-200 text-sm sm:text-base">Total Duration:</span>
+                                <span class="font-bold text-white text-sm sm:text-base">7 Days ⚡</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-gray-600">Daily Classes:</span>
-                                <span class="font-bold text-purple-600">1 Class</span>
+                                <span class="text-purple-200 text-sm sm:text-base">Daily Classes:</span>
+                                <span class="font-bold text-white text-sm sm:text-base">1 Class 📚</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-gray-600">Class Duration:</span>
-                                <span class="font-bold text-purple-600">1 Hour</span>
+                                <span class="text-purple-200 text-sm sm:text-base">Class Duration:</span>
+                                <span class="font-bold text-white text-sm sm:text-base">1 Hour ⏱️</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-gray-600">Total Hours:</span>
-                                <span class="font-bold text-purple-600">7 Hours</span>
+                                <span class="text-purple-200 text-sm sm:text-base">Total Hours:</span>
+                                <span class="font-bold text-white text-sm sm:text-base">7 Hours 🎯</span>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Class Timing -->
-                    <div class="bg-white rounded-2xl p-8 card-hover fade-in-up" style="animation-delay: 0.2s;">
-                        <div class="feature-icon">🕐</div>
-                        <h4 class="text-2xl font-bold text-center mb-4 text-gray-800">Class Timings</h4>
+                    <div class="glass-card p-6 sm:p-8 fade-in-up glow-effect" style="animation-delay: 0.2s;">
+                        <div class="w-16 h-16 cyber-button rounded-2xl flex items-center justify-center text-2xl text-white mx-auto mb-4 glow-effect">🕐</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-center mb-4 text-white">Class Timings</h4>
                         <div class="space-y-4">
-                            <div class="bg-gradient-to-r from-purple-100 via-pink-100 to-red-100 p-6 rounded-lg border-l-4 border-purple-400 shadow-md text-center">
-                                <div class="font-bold text-purple-600 text-xl">Daily Classes</div>
-                                <div class="text-gray-700 text-lg font-semibold">7:00 PM - 8:00 PM</div>
-                                <div class="text-sm text-gray-500">Monday to Sunday</div>
-                                <div class="text-xs text-purple-600 mt-2">7 Consecutive Days</div>
+                            <div class="glass-card p-4 sm:p-6 text-center glow-effect">
+                                <div class="font-bold text-white text-lg sm:text-xl">Daily Classes 🎯</div>
+                                <div class="text-purple-100 text-base sm:text-lg font-semibold">7:00 PM - 8:00 PM</div>
+                                <div class="text-sm text-purple-200">Monday to Sunday</div>
+                                <div class="text-xs text-purple-300 mt-2">7 Consecutive Days ⚡</div>
                             </div>
-                            <div class="bg-gradient-to-r from-blue-100 via-indigo-100 to-purple-100 p-4 rounded-lg border-l-4 border-blue-400 shadow-md">
-                                <div class="font-bold text-blue-600">Course Format</div>
-                                <div class="text-gray-700">Live Interactive Sessions</div>
-                                <div class="text-sm text-gray-500">Recorded for later access</div>
+                            <div class="glass-card p-3 sm:p-4 glow-effect">
+                                <div class="font-bold text-white text-sm sm:text-base">Course Format 📚</div>
+                                <div class="text-purple-100 text-sm">Live Interactive Sessions</div>
+                                <div class="text-xs text-purple-200">Recorded for later access 🎥</div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- What You'll Learn -->
-                    <div class="bg-white rounded-2xl p-8 card-hover fade-in-up" style="animation-delay: 0.4s;">
-                        <div class="feature-icon">🎯</div>
-                        <h4 class="text-2xl font-bold text-center mb-4 text-gray-800">What You'll Master</h4>
+                    <div class="glass-card p-6 sm:p-8 fade-in-up glow-effect" style="animation-delay: 0.4s;">
+                        <div class="w-16 h-16 cyber-button rounded-2xl flex items-center justify-center text-2xl text-white mx-auto mb-4 glow-effect">🎯</div>
+                        <h4 class="text-xl sm:text-2xl font-bold text-center mb-4 text-white">What You'll Master</h4>
                         <ul class="space-y-3">
                             <li class="flex items-center space-x-3">
-                                <span class="text-green-500 font-bold">✓</span>
-                                <span class="text-gray-700">Canva Interface & Tools</span>
+                                <span class="text-green-400 font-bold text-lg">✓</span>
+                                <span class="text-purple-100 text-sm sm:text-base">Canva Interface & Tools 🛠️</span>
                             </li>
                             <li class="flex items-center space-x-3">
-                                <span class="text-green-500 font-bold">✓</span>
-                                <span class="text-gray-700">Social Media Design</span>
+                                <span class="text-green-400 font-bold text-lg">✓</span>
+                                <span class="text-purple-100 text-sm sm:text-base">Social Media Design 📱</span>
                             </li>
                             <li class="flex items-center space-x-3">
-                                <span class="text-green-500 font-bold">✓</span>
-                                <span class="text-gray-700">Brand Identity Creation</span>
+                                <span class="text-green-400 font-bold text-lg">✓</span>
+                                <span class="text-purple-100 text-sm sm:text-base">Brand Identity Creation 🎨</span>
                             </li>
                             <li class="flex items-center space-x-3">
-                                <span class="text-green-500 font-bold">✓</span>
-                                <span class="text-gray-700">Marketing Materials</span>
+                                <span class="text-green-400 font-bold text-lg">✓</span>
+                                <span class="text-purple-100 text-sm sm:text-base">Marketing Materials 📊</span>
                             </li>
                             <li class="flex items-center space-x-3">
-                                <span class="text-green-500 font-bold">✓</span>
-                                <span class="text-gray-700">Animation & Video</span>
+                                <span class="text-green-400 font-bold text-lg">✓</span>
+                                <span class="text-purple-100 text-sm sm:text-base">Animation & Video 🎬</span>
                             </li>
                             <li class="flex items-center space-x-3">
-                                <span class="text-green-500 font-bold">✓</span>
-                                <span class="text-gray-700">Print Design</span>
+                                <span class="text-green-400 font-bold text-lg">✓</span>
+                                <span class="text-purple-100 text-sm sm:text-base">Print Design 🖨️</span>
                             </li>
                         </ul>
                     </div>
@@ -375,124 +458,124 @@
         </section>
 
         <!-- Curriculum Section -->
-        <section id="curriculum" class="py-20 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h3 class="text-5xl font-bold mb-4 text-gray-800">Course Curriculum</h3>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comprehensive lessons designed to take you from beginner to expert</p>
+        <section id="curriculum" class="py-12 sm:py-20 mobile-friendly">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16">
+                    <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white holographic">Course Curriculum 📚</h3>
+                    <p class="text-lg sm:text-xl text-purple-100 max-w-3xl mx-auto">Comprehensive lessons designed to take you from beginner to expert ✨</p>
                 </div>
                 
                 <div class="max-w-4xl mx-auto">
                     <!-- 7-Day Course Structure -->
-                    <div class="grid gap-8">
+                    <div class="grid gap-6 sm:gap-8">
                         <!-- Day 1 -->
-                        <div class="lesson-card fade-in-up">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-600 text-white rounded-full flex items-center justify-center font-bold mr-4 shadow-lg">1</div>
-                                <div>
-                                    <h5 class="text-xl font-bold text-gray-800">Day 1: Getting Started with Canva</h5>
-                                    <p class="text-sm text-purple-600 font-semibold">7:00 PM - 8:00 PM</p>
+                        <div class="glass-card p-4 sm:p-6 fade-in-up glow-effect">
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
+                                <div class="w-12 h-12 cyber-button text-white rounded-full flex items-center justify-center font-bold shadow-lg glow-effect">1</div>
+                                <div class="flex-1">
+                                    <h5 class="text-lg sm:text-xl font-bold text-white">Day 1: Getting Started with Canva 🚀</h5>
+                                    <p class="text-sm text-purple-300 font-semibold">7:00 PM - 8:00 PM</p>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-3">Complete interface walkthrough, account setup, basic navigation, and understanding Canva's ecosystem</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span class="mr-4">⏱️ 60 mins</span>
+                            <p class="text-purple-100 mb-3 text-sm sm:text-base">Complete interface walkthrough, account setup, basic navigation, and understanding Canva's ecosystem</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-purple-200">
+                                <span>⏱️ 60 mins</span>
                                 <span>🎥 Live Session + Practice</span>
                             </div>
                         </div>
 
                         <!-- Day 2 -->
-                        <div class="lesson-card fade-in-up" style="animation-delay: 0.1s;">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-full flex items-center justify-center font-bold mr-4 shadow-lg">2</div>
-                                <div>
-                                    <h5 class="text-xl font-bold text-gray-800">Day 2: Design Principles & Templates</h5>
-                                    <p class="text-sm text-purple-600 font-semibold">7:00 PM - 8:00 PM</p>
+                        <div class="glass-card p-4 sm:p-6 fade-in-up glow-effect" style="animation-delay: 0.1s;">
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
+                                <div class="w-12 h-12 cyber-button text-white rounded-full flex items-center justify-center font-bold shadow-lg glow-effect">2</div>
+                                <div class="flex-1">
+                                    <h5 class="text-lg sm:text-xl font-bold text-white">Day 2: Design Principles & Templates 🎨</h5>
+                                    <p class="text-sm text-purple-300 font-semibold">7:00 PM - 8:00 PM</p>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-3">Color theory, typography basics, working with templates, and customizing design elements</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span class="mr-4">⏱️ 60 mins</span>
+                            <p class="text-purple-100 mb-3 text-sm sm:text-base">Color theory, typography basics, working with templates, and customizing design elements</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-purple-200">
+                                <span>⏱️ 60 mins</span>
                                 <span>📚 Theory + Hands-on</span>
                             </div>
                         </div>
 
                         <!-- Day 3 -->
-                        <div class="lesson-card fade-in-up" style="animation-delay: 0.2s;">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-full flex items-center justify-center font-bold mr-4 shadow-lg">3</div>
-                                <div>
-                                    <h5 class="text-xl font-bold text-gray-800">Day 3: Social Media Design Mastery</h5>
-                                    <p class="text-sm text-purple-600 font-semibold">7:00 PM - 8:00 PM</p>
+                        <div class="glass-card p-4 sm:p-6 fade-in-up glow-effect" style="animation-delay: 0.2s;">
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
+                                <div class="w-12 h-12 cyber-button text-white rounded-full flex items-center justify-center font-bold shadow-lg glow-effect">3</div>
+                                <div class="flex-1">
+                                    <h5 class="text-lg sm:text-xl font-bold text-white">Day 3: Social Media Design Mastery 📱</h5>
+                                    <p class="text-sm text-purple-300 font-semibold">7:00 PM - 8:00 PM</p>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-3">Instagram posts, stories, Facebook covers, LinkedIn graphics, and social media best practices</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span class="mr-4">⏱️ 60 mins</span>
+                            <p class="text-purple-100 mb-3 text-sm sm:text-base">Instagram posts, stories, Facebook covers, LinkedIn graphics, and social media best practices</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-purple-200">
+                                <span>⏱️ 60 mins</span>
                                 <span>📱 Live Projects</span>
                             </div>
                         </div>
 
                         <!-- Day 4 -->
-                        <div class="lesson-card fade-in-up" style="animation-delay: 0.3s;">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-full flex items-center justify-center font-bold mr-4 shadow-lg">4</div>
-                                <div>
-                                    <h5 class="text-xl font-bold text-gray-800">Day 4: Business & Marketing Materials</h5>
-                                    <p class="text-sm text-purple-600 font-semibold">7:00 PM - 8:00 PM</p>
+                        <div class="glass-card p-4 sm:p-6 fade-in-up glow-effect" style="animation-delay: 0.3s;">
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
+                                <div class="w-12 h-12 cyber-button text-white rounded-full flex items-center justify-center font-bold shadow-lg glow-effect">4</div>
+                                <div class="flex-1">
+                                    <h5 class="text-lg sm:text-xl font-bold text-white">Day 4: Business & Marketing Materials 💼</h5>
+                                    <p class="text-sm text-purple-300 font-semibold">7:00 PM - 8:00 PM</p>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-3">Business cards, flyers, brochures, presentations, and professional marketing content</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span class="mr-4">⏱️ 60 mins</span>
+                            <p class="text-purple-100 mb-3 text-sm sm:text-base">Business cards, flyers, brochures, presentations, and professional marketing content</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-purple-200">
+                                <span>⏱️ 60 mins</span>
                                 <span>💼 Business Focus</span>
                             </div>
                         </div>
 
                         <!-- Day 5 -->
-                        <div class="lesson-card fade-in-up" style="animation-delay: 0.4s;">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-600 text-white rounded-full flex items-center justify-center font-bold mr-4 shadow-lg">5</div>
-                                <div>
-                                    <h5 class="text-xl font-bold text-gray-800">Day 5: Logo & Brand Identity Creation</h5>
-                                    <p class="text-sm text-purple-600 font-semibold">7:00 PM - 8:00 PM</p>
+                        <div class="glass-card p-4 sm:p-6 fade-in-up glow-effect" style="animation-delay: 0.4s;">
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
+                                <div class="w-12 h-12 cyber-button text-white rounded-full flex items-center justify-center font-bold shadow-lg glow-effect">5</div>
+                                <div class="flex-1">
+                                    <h5 class="text-lg sm:text-xl font-bold text-white">Day 5: Logo & Brand Identity Creation 🏷️</h5>
+                                    <p class="text-sm text-purple-300 font-semibold">7:00 PM - 8:00 PM</p>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-3">Creating logos, brand kits, consistent visual identity, and brand guidelines</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span class="mr-4">⏱️ 60 mins</span>
+                            <p class="text-purple-100 mb-3 text-sm sm:text-base">Creating logos, brand kits, consistent visual identity, and brand guidelines</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-purple-200">
+                                <span>⏱️ 60 mins</span>
                                 <span>🎨 Brand Building</span>
                             </div>
                         </div>
 
                         <!-- Day 6 -->
-                        <div class="lesson-card fade-in-up" style="animation-delay: 0.5s;">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-orange-600 text-white rounded-full flex items-center justify-center font-bold mr-4 shadow-lg">6</div>
-                                <div>
-                                    <h5 class="text-xl font-bold text-gray-800">Day 6: Advanced Features & Animation</h5>
-                                    <p class="text-sm text-purple-600 font-semibold">7:00 PM - 8:00 PM</p>
+                        <div class="glass-card p-4 sm:p-6 fade-in-up glow-effect" style="animation-delay: 0.5s;">
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
+                                <div class="w-12 h-12 cyber-button text-white rounded-full flex items-center justify-center font-bold shadow-lg glow-effect">6</div>
+                                <div class="flex-1">
+                                    <h5 class="text-lg sm:text-xl font-bold text-white">Day 6: Advanced Features & Animation 🎬</h5>
+                                    <p class="text-sm text-purple-300 font-semibold">7:00 PM - 8:00 PM</p>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-3">Photo editing, background removal, animations, video creation, and advanced Canva features</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span class="mr-4">⏱️ 60 mins</span>
+                            <p class="text-purple-100 mb-3 text-sm sm:text-base">Photo editing, background removal, animations, video creation, and advanced Canva features</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-purple-200">
+                                <span>⏱️ 60 mins</span>
                                 <span>🎬 Advanced Techniques</span>
                             </div>
                         </div>
 
                         <!-- Day 7 -->
-                        <div class="lesson-card fade-in-up" style="animation-delay: 0.6s;">
-                            <div class="flex items-center mb-4">
-                                <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-yellow-600 text-white rounded-full flex items-center justify-center font-bold mr-4 shadow-lg">7</div>
-                                <div>
-                                    <h5 class="text-xl font-bold text-gray-800">Day 7: Portfolio Building & Monetization</h5>
-                                    <p class="text-sm text-purple-600 font-semibold">7:00 PM - 8:00 PM</p>
+                        <div class="glass-card p-4 sm:p-6 fade-in-up glow-effect" style="animation-delay: 0.6s;">
+                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
+                                <div class="w-12 h-12 cyber-button text-white rounded-full flex items-center justify-center font-bold shadow-lg glow-effect">7</div>
+                                <div class="flex-1">
+                                    <h5 class="text-lg sm:text-xl font-bold text-white">Day 7: Portfolio Building & Monetization 💰</h5>
+                                    <p class="text-sm text-purple-300 font-semibold">7:00 PM - 8:00 PM</p>
                                 </div>
                             </div>
-                            <p class="text-gray-600 mb-3">Building professional portfolio, freelancing tips, client work strategies, and monetizing your skills</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span class="mr-4">⏱️ 60 mins</span>
+                            <p class="text-purple-100 mb-3 text-sm sm:text-base">Building professional portfolio, freelancing tips, client work strategies, and monetizing your skills</p>
+                            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-purple-200">
+                                <span>⏱️ 60 mins</span>
                                 <span>💰 Career Focus</span>
                             </div>
                         </div>
@@ -502,63 +585,63 @@
         </section>
 
         <!-- Free Ebook Section -->
-        <section class="py-20 gradient-bg text-white">
-            <div class="container mx-auto px-6 text-center">
+        <section class="py-12 sm:py-20 mobile-friendly">
+            <div class="container mx-auto px-4 sm:px-6 text-center">
                 <div class="max-w-4xl mx-auto">
-                    <h3 class="text-5xl font-bold mb-6">Free Canva Design Guide</h3>
-                    <p class="text-xl mb-8 opacity-90">Get our comprehensive 50-page Canva guide absolutely free! Perfect for beginners and includes templates, tips, and tricks.</p>
+                    <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white holographic">Bonus: 50+ Templates Pack 🎁</h3>
+                    <p class="text-lg sm:text-xl mb-8 text-purple-100">Get our exclusive 50+ design templates pack after completing the course! Perfect for all your design needs. ✨</p>
                     
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
                         <div class="text-left">
-                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-8 float-animation">
-                                <div class="text-6xl mb-4 text-center">📚</div>
-                                <h4 class="text-2xl font-bold mb-4">What's Inside:</h4>
+                            <div class="glass-card p-6 sm:p-8 float-animation glow-effect">
+                                <div class="text-4xl sm:text-6xl mb-4 text-center">🎨</div>
+                                <h4 class="text-xl sm:text-2xl font-bold mb-4 text-white">What's Included:</h4>
                                 <ul class="space-y-3">
                                     <li class="flex items-center space-x-3">
-                                        <span class="text-yellow-300">✓</span>
-                                        <span>50+ Design Templates</span>
+                                        <span class="text-yellow-400">✓</span>
+                                        <span class="text-purple-100 text-sm sm:text-base">50+ Premium Templates 🎯</span>
                                     </li>
                                     <li class="flex items-center space-x-3">
-                                        <span class="text-yellow-300">✓</span>
-                                        <span>Color Palette Guide</span>
+                                        <span class="text-yellow-400">✓</span>
+                                        <span class="text-purple-100 text-sm sm:text-base">Social Media Pack 📱</span>
                                     </li>
                                     <li class="flex items-center space-x-3">
-                                        <span class="text-yellow-300">✓</span>
-                                        <span>Typography Best Practices</span>
+                                        <span class="text-yellow-400">✓</span>
+                                        <span class="text-purple-100 text-sm sm:text-base">Business Templates 💼</span>
                                     </li>
                                     <li class="flex items-center space-x-3">
-                                        <span class="text-yellow-300">✓</span>
-                                        <span>Social Media Size Guide</span>
+                                        <span class="text-yellow-400">✓</span>
+                                        <span class="text-purple-100 text-sm sm:text-base">Marketing Materials 📊</span>
                                     </li>
                                     <li class="flex items-center space-x-3">
-                                        <span class="text-yellow-300">✓</span>
-                                        <span>Design Inspiration Gallery</span>
+                                        <span class="text-yellow-400">✓</span>
+                                        <span class="text-purple-100 text-sm sm:text-base">Brand Identity Kit 🏷️</span>
                                     </li>
                                     <li class="flex items-center space-x-3">
-                                        <span class="text-yellow-300">✓</span>
-                                        <span>Pro Tips & Shortcuts</span>
+                                        <span class="text-yellow-400">✓</span>
+                                        <span class="text-purple-100 text-sm sm:text-base">Pro Design Tips 💡</span>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                         
                         <div>
-                            <div class="bg-white text-gray-800 rounded-2xl p-8">
-                                <h4 class="text-2xl font-bold mb-6">Download Your Free Guide</h4>
+                            <div class="glass-card p-6 sm:p-8 glow-effect">
+                                <h4 class="text-xl sm:text-2xl font-bold mb-6 text-white">Get Your Templates Pack 🚀</h4>
                                 <form onsubmit="downloadEbook(event)" class="space-y-4">
                                     <div>
-                                        <label for="ebookName" class="block text-left font-semibold mb-2">Full Name</label>
-                                        <input type="text" id="ebookName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                        <label for="ebookName" class="block text-left font-semibold mb-2 text-purple-200 text-sm sm:text-base">Full Name</label>
+                                        <input type="text" id="ebookName" required class="w-full px-4 py-3 glass-card text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm sm:text-base" placeholder="Enter your name">
                                     </div>
                                     <div>
-                                        <label for="ebookEmail" class="block text-left font-semibold mb-2">Email Address</label>
-                                        <input type="email" id="ebookEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                        <label for="ebookEmail" class="block text-left font-semibold mb-2 text-purple-200 text-sm sm:text-base">Email Address</label>
+                                        <input type="email" id="ebookEmail" required class="w-full px-4 py-3 glass-card text-white placeholder-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400 text-sm sm:text-base" placeholder="Enter your email">
                                     </div>
-                                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 rounded-lg font-bold text-lg hover:from-purple-700 hover:to-blue-700 transition-all pulse-hover">
-                                        📥 Download Free Guide
+                                    <button type="submit" class="w-full cyber-button text-white py-3 sm:py-4 rounded-lg font-bold text-base sm:text-lg pulse-hover glow-effect">
+                                        🎁 Get Templates Pack
                                     </button>
                                 </form>
-                                <p class="text-sm text-gray-500 mt-4">No spam, just valuable design content!</p>
+                                <p class="text-xs sm:text-sm text-purple-300 mt-4">Available after course completion! 🎉</p>
                             </div>
                         </div>
                     </div>
@@ -716,86 +799,86 @@
         </section>
 
         <!-- Pricing Section -->
-        <section id="pricing" class="py-20 gradient-bg text-white">
-            <div class="container mx-auto px-6 text-center">
-                <h3 class="text-5xl font-bold mb-6">Special Launch Offer</h3>
-                <p class="text-xl mb-12 opacity-90">Limited time pricing - Save 60% on the regular price!</p>
+        <section id="pricing" class="py-12 sm:py-20 mobile-friendly">
+            <div class="container mx-auto px-4 sm:px-6 text-center">
+                <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white holographic">Special Launch Offer 🚀</h3>
+                <p class="text-lg sm:text-xl mb-8 sm:mb-12 text-purple-100">Limited time pricing - Save 60% on the regular price! ⚡</p>
                 
                 <div class="max-w-2xl mx-auto">
-                    <div class="bg-white text-gray-800 rounded-3xl p-12 shadow-2xl relative">
-                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black px-6 py-3 rounded-full font-bold">
+                    <div class="glass-card p-6 sm:p-12 shadow-2xl relative glow-effect">
+                        <div class="absolute -top-3 sm:-top-6 left-1/2 transform -translate-x-1/2 cyber-button text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base glow-effect">
                             🔥 60% OFF - Limited Time
                         </div>
                         
-                        <div class="mb-8">
-                            <div class="text-6xl font-bold price-highlight mb-4">₹499</div>
-                            <div class="text-2xl text-gray-500 line-through mb-2">₹1,249</div>
-                            <p class="text-lg text-gray-600">One-time payment • Lifetime access</p>
+                        <div class="mb-6 sm:mb-8 mt-4 sm:mt-0">
+                            <div class="text-4xl sm:text-6xl font-bold holographic mb-4">₹499</div>
+                            <div class="text-xl sm:text-2xl text-purple-300 line-through mb-2">₹1,249</div>
+                            <p class="text-base sm:text-lg text-purple-200">One-time payment • Lifetime access ✨</p>
                         </div>
                         
-                        <div class="grid md:grid-cols-2 gap-6 mb-8">
-                            <div class="text-left space-y-3">
+                        <div class="grid md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+                            <div class="text-left space-y-2 sm:space-y-3">
                                 <div class="flex items-center space-x-3">
-                                    <span class="text-green-500 font-bold">✓</span>
-                                    <span>7 Hours Live Training</span>
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span class="text-purple-100 text-sm sm:text-base">7 Hours Live Training 🎯</span>
                                 </div>
                                 <div class="flex items-center space-x-3">
-                                    <span class="text-green-500 font-bold">✓</span>
-                                    <span>7 Video Lessons</span>
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span class="text-purple-100 text-sm sm:text-base">7 Video Lessons 🎥</span>
                                 </div>
                                 <div class="flex items-center space-x-3">
-                                    <span class="text-green-500 font-bold">✓</span>
-                                    <span>100+ Design Templates</span>
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span class="text-purple-100 text-sm sm:text-base">50+ Design Templates 🎨</span>
                                 </div>
                                 <div class="flex items-center space-x-3">
-                                    <span class="text-green-500 font-bold">✓</span>
-                                    <span>Free Canva Ebook Guide</span>
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span class="text-purple-100 text-sm sm:text-base">Bonus Templates Pack 🎁</span>
                                 </div>
                             </div>
-                            <div class="text-left space-y-3">
+                            <div class="text-left space-y-2 sm:space-y-3">
                                 <div class="flex items-center space-x-3">
-                                    <span class="text-green-500 font-bold">✓</span>
-                                    <span>Certificate of Completion</span>
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span class="text-purple-100 text-sm sm:text-base">Certificate of Completion 🏆</span>
                                 </div>
                                 <div class="flex items-center space-x-3">
-                                    <span class="text-green-500 font-bold">✓</span>
-                                    <span>Lifetime Community Access</span>
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span class="text-purple-100 text-sm sm:text-base">Lifetime Community Access 👥</span>
                                 </div>
                                 <div class="flex items-center space-x-3">
-                                    <span class="text-green-500 font-bold">✓</span>
-                                    <span>30-Day Money Back Guarantee</span>
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span class="text-purple-100 text-sm sm:text-base">Direct Instructor Support 💬</span>
                                 </div>
                                 <div class="flex items-center space-x-3">
-                                    <span class="text-green-500 font-bold">✓</span>
-                                    <span>Direct Instructor Support</span>
+                                    <span class="text-green-400 font-bold">✓</span>
+                                    <span class="text-purple-100 text-sm sm:text-base">Recorded Sessions 📹</span>
                                 </div>
                             </div>
                         </div>
                         
-                        <button onclick="enrollNow()" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-6 rounded-2xl font-bold text-xl hover:from-purple-700 hover:to-blue-700 transition-all pulse-hover mb-6">
-                            🚀 Enroll Now - ₹499 Only
+                        <button onclick="enrollNow()" class="w-full cyber-button text-white py-4 sm:py-6 rounded-2xl font-bold text-lg sm:text-xl pulse-hover mb-4 sm:mb-6 glow-effect">
+                            🚀 Join Now - ₹499 Only
                         </button>
                         
-                        <div class="flex items-center justify-center space-x-6 text-sm text-gray-500">
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-purple-300">
                             <div class="flex items-center space-x-2">
-                                <span class="text-green-500">🔒</span>
+                                <span class="text-green-400">🔒</span>
                                 <span>Secure Payment</span>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <span class="text-blue-500">💳</span>
+                                <span class="text-blue-400">💳</span>
                                 <span>All Payment Methods</span>
                             </div>
                             <div class="flex items-center space-x-2">
-                                <span class="text-purple-500">⚡</span>
+                                <span class="text-purple-400">⚡</span>
                                 <span>Instant Access</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mt-12 text-center">
-                    <p class="text-lg opacity-90 mb-4">⏰ Offer expires in: <span id="countdown" class="font-bold text-yellow-300">23:59:45</span></p>
-                    <p class="text-sm opacity-75">Join 5000+ students who have already transformed their design skills!</p>
+                <div class="mt-8 sm:mt-12 text-center">
+                    <p class="text-base sm:text-lg text-purple-100 mb-4">⏰ Offer expires in: <span id="countdown" class="font-bold holographic">23:59:45</span></p>
+                    <p class="text-sm text-purple-200">Join 5000+ students who have already transformed their design skills! 🎉</p>
                 </div>
             </div>
         </section>
@@ -864,51 +947,65 @@
     </main>
 
     <!-- Footer -->
-    <footer class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+    <footer class="py-12 sm:py-16 mobile-friendly">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                            <span class="text-2xl">🎨</span>
+                        <div class="w-12 h-12 glass-card glow-effect flex items-center justify-center">
+                            <span class="text-2xl">🚀</span>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">Canva Mastery</h3>
-                            <p class="text-sm opacity-90">Design Like a Pro</p>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white neon-text">Canva Mastery</h3>
+                            <p class="text-sm text-purple-300">Design Like a Pro ✨</p>
                         </div>
                     </div>
-                    <p class="text-purple-200 mb-6">Transform your design skills and create stunning visuals that captivate your audience.</p>
+                    <p class="text-purple-200 mb-6 text-sm sm:text-base">Transform your design skills and create stunning visuals that captivate your audience. 🎨</p>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold mb-4">Contact Info</h4>
+                    <h4 class="text-lg font-bold mb-4 text-white">Contact Info 📞</h4>
                     <div class="space-y-3 text-purple-200">
                         <div class="flex items-center space-x-3">
-                            <span>📧</span>
-                            <span>connectadocreate@gmail.com</span>
+                            <span class="text-lg">📧</span>
+                            <span class="text-sm sm:text-base">connectadocreate@gmail.com</span>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <span>📱</span>
-                            <span>+91 8433415139</span>
+                            <span class="text-lg">📱</span>
+                            <span class="text-sm sm:text-base">+91 8433415139</span>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <span>⏰</span>
-                            <span>7:00 PM TO 8:00 PM</span>
+                            <span class="text-lg">⏰</span>
+                            <span class="text-sm sm:text-base">7:00 PM TO 8:00 PM</span>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-purple-400 mt-12 pt-8 text-center">
-                <p class="text-purple-300">&copy; 2025 Canva Mastery Course. All rights reserved. | Adolearn by Gaurav Kurmi</p>
+            <div class="glass-card mt-8 sm:mt-12 p-4 sm:p-6 text-center">
+                <p class="text-purple-300 text-sm sm:text-base">&copy; 2025 Canva Mastery Course. All rights reserved. | Adolearn by Gaurav Kurmi ✨</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenuBtn.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>';
+            }
+        }
+
         // Stats counter animation
         function animateCounters() {
-            const counters = document.querySelectorAll('.stats-counter');
+            const counters = document.querySelectorAll('[data-target]');
             
             counters.forEach(counter => {
                 const target = parseInt(counter.getAttribute('data-target'));
@@ -1037,6 +1134,12 @@
 
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+            
             // Start countdown
             startCountdown();
             
@@ -1050,9 +1153,9 @@
                 });
             });
             
-            const statsSection = document.querySelector('.stats-counter').closest('section');
+            const statsSection = document.querySelector('[data-target]');
             if (statsSection) {
-                observer.observe(statsSection);
+                observer.observe(statsSection.closest('section'));
             }
             
             // Add smooth scrolling for navigation links
@@ -1065,10 +1168,16 @@
                             behavior: 'smooth',
                             block: 'start'
                         });
+                        
+                        // Close mobile menu if open
+                        const mobileMenu = document.getElementById('mobileMenu');
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            toggleMobileMenu();
+                        }
                     }
                 });
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9948a2b6759e45af',t:'MTc2MTQ2Nzg4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9948cdec67fa45af',t:'MTc2MTQ2OTY1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
