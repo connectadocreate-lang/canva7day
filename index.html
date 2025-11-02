@@ -15,7 +15,7 @@
             color: #ffffff;
             overflow-x: hidden;
             position: relative;
-            font-family: 'Inter', 'Poppins', 'Roboto', system-ui, -apple-system, sans-serif;
+            font-family: 'Poppins', 'Inter', 'Roboto', system-ui, -apple-system, sans-serif;
             font-weight: 400;
             line-height: 1.6;
             letter-spacing: -0.01em;
@@ -233,7 +233,7 @@
         }
         
         .modern-nav {
-            background: rgba(15, 15, 35, 0.9);
+            background: rgba(15, 15, 35, 0.3);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -443,8 +443,84 @@
             left: 100%;
         }
         
+        /* Mobile Menu Styles */
+        .mobile-menu-button {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-menu-dot {
+            width: 6px;
+            height: 6px;
+            background: #ffffff;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 40;
+        }
+        
+        .mobile-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu-content {
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .mobile-menu-item {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+        
+        .mobile-menu-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
+            color: #00d4ff;
+        }
+
         /* Mobile Responsive Styles */
         @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: flex;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
             .text-6xl, .text-7xl, .text-8xl {
                 font-size: 2.5rem !important;
                 line-height: 1.1;
@@ -689,10 +765,19 @@
        </div>
       </div>
      </div>
-     <div class="hidden md:flex items-center space-x-8"><a href="#course" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Course</a> <a href="#overview" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Overview</a> <a href="#modules" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Modules</a> <a href="#instructor" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Instructor</a> <a href="#pricing" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Pricing</a>
+     <div class="desktop-nav hidden md:flex items-center space-x-8"><a href="#course" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Course</a> <a href="#overview" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Overview</a> <a href="#modules" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Modules</a> <a href="#instructor" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Instructor</a> <a href="#pricing" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Pricing</a>
+     </div><!-- Mobile Menu Button -->
+     <div class="mobile-menu-button" id="mobileMenuButton">
+      <div class="mobile-menu-dot"></div>
+      <div class="mobile-menu-dot"></div>
+      <div class="mobile-menu-dot"></div>
      </div><a href="https://wa.me/8433415139?text=I%20want%20to%20join%20the%20Canva%20Mastery%20Course" target="_blank" rel="noopener noreferrer"> <button class="modern-button px-6 py-3 text-sm font-bold"> CONNECT </button> </a>
     </div>
-   </nav>
+   </nav><!-- Mobile Menu -->
+   <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-content"><a href="#course" class="mobile-menu-item">Course</a> <a href="#overview" class="mobile-menu-item">Overview</a> <a href="#modules" class="mobile-menu-item">Modules</a> <a href="#instructor" class="mobile-menu-item">Instructor</a> <a href="#pricing" class="mobile-menu-item">Pricing</a>
+    </div>
+   </div>
   </header><!-- Hero Section -->
   <section class="min-h-full relative overflow-hidden pt-20"><!-- Animated Background -->
    <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"></div>
@@ -1514,34 +1599,22 @@
             text_color: "#ffffff",
             primary_action_color: "#00ffff",
             secondary_action_color: "#ff00ff",
-            font_family: "Inter",
+            font_family: "Poppins",
             font_size: 16
         };
 
         async function onConfigChange(config) {
             const customFont = config.font_family || defaultConfig.font_family;
-            const baseFontStack = 'Inter, Poppins, Roboto, system-ui, -apple-system, sans-serif';
+            const baseFontStack = 'Poppins, Inter, Roboto, system-ui, -apple-system, sans-serif';
             const fontFamily = `${customFont}, ${baseFontStack}`;
             const baseSize = config.font_size || defaultConfig.font_size;
             
             document.body.style.fontFamily = fontFamily;
             
-            // Apply font to all headings
-            const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-            headings.forEach(heading => {
-                heading.style.fontFamily = `Poppins, ${customFont}, ${baseFontStack}`;
-            });
-            
-            // Apply font to body text elements
-            const bodyTexts = document.querySelectorAll('.body-text');
-            bodyTexts.forEach(text => {
-                text.style.fontFamily = `${customFont}, ${baseFontStack}`;
-            });
-            
-            // Apply font to button text elements
-            const buttonTexts = document.querySelectorAll('.button-text');
-            buttonTexts.forEach(button => {
-                button.style.fontFamily = `${customFont}, ${baseFontStack}`;
+            // Apply Poppins font to all elements
+            const allElements = document.querySelectorAll('*');
+            allElements.forEach(element => {
+                element.style.fontFamily = `Poppins, ${customFont}, ${baseFontStack}`;
             });
             
             document.getElementById('hero-headline').innerHTML = `
@@ -1766,6 +1839,28 @@
         
         // Start countdown when page loads
         startCountdown();
+        
+        // Mobile Menu Functionality
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on menu items
+        document.querySelectorAll('.mobile-menu-item').forEach(item => {
+            item.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99825c59227459d8',t:'MTc2MjA3MzE3OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998266db32211c49',t:'MTc2MjA3MzYwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
