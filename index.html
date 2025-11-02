@@ -1527,7 +1527,7 @@
          ⏰ OFFER EXPIRES IN:
         </div>
         <div class="countdown-display" id="countdownDisplay">
-         <div class="countdown-unit"><span class="countdown-number" id="minutes">20</span> <span class="countdown-label">MIN</span>
+         <div class="countdown-unit"><span class="countdown-number" id="minutes">10</span> <span class="countdown-label">MIN</span>
          </div>
          <div class="countdown-unit"><span class="countdown-number" id="seconds">00</span> <span class="countdown-label">SEC</span>
          </div>
@@ -1795,32 +1795,16 @@
 
         // Countdown Timer Functionality
         function startCountdown() {
-            // Check if countdown has already been started
-            const savedEndTime = localStorage.getItem('countdownEndTime');
-            let endTime;
-            
-            if (savedEndTime) {
-                endTime = new Date(savedEndTime);
-            } else {
-                // Set countdown for 20 minutes from now
-                endTime = new Date();
-                endTime.setMinutes(endTime.getMinutes() + 20);
-                localStorage.setItem('countdownEndTime', endTime.toISOString());
-            }
+            // Always start fresh countdown for 10 minutes on every page reload
+            let timeLeft = 10 * 60 * 1000; // 10 minutes in milliseconds
             
             const minutesElement = document.getElementById('minutes');
             const secondsElement = document.getElementById('seconds');
             
             function updateCountdown() {
-                const now = new Date();
-                const timeLeft = endTime - now;
-                
                 if (timeLeft <= 0) {
-                    // Timer expired - reset for another 20 minutes
-                    endTime = new Date();
-                    endTime.setMinutes(endTime.getMinutes() + 20);
-                    localStorage.setItem('countdownEndTime', endTime.toISOString());
-                    return;
+                    // Timer expired - reset for another 10 minutes
+                    timeLeft = 10 * 60 * 1000;
                 }
                 
                 const minutes = Math.floor(timeLeft / (1000 * 60));
@@ -1828,6 +1812,9 @@
                 
                 minutesElement.textContent = minutes.toString().padStart(2, '0');
                 secondsElement.textContent = seconds.toString().padStart(2, '0');
+                
+                // Decrease time by 1 second
+                timeLeft -= 1000;
             }
             
             // Update immediately
@@ -1862,5 +1849,5 @@
             }
         });
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998266db32211c49',t:'MTc2MjA3MzYwOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998270e3850a59d8',t:'MTc2MjA3NDAyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
