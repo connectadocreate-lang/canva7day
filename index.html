@@ -399,6 +399,228 @@
         .cyber-button:hover::before {
             left: 100%;
         }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .text-6xl, .text-7xl, .text-8xl {
+                font-size: 2.5rem !important;
+                line-height: 1.1;
+            }
+            
+            .text-5xl {
+                font-size: 2rem !important;
+            }
+            
+            .text-4xl {
+                font-size: 1.75rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1.125rem !important;
+            }
+            
+            .px-12 {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+            
+            .py-5 {
+                padding-top: 0.75rem !important;
+                padding-bottom: 0.75rem !important;
+            }
+            
+            .gap-8 {
+                gap: 1rem !important;
+            }
+            
+            .gap-6 {
+                gap: 0.75rem !important;
+            }
+            
+            .p-8 {
+                padding: 1rem !important;
+            }
+            
+            .p-12 {
+                padding: 1.5rem !important;
+            }
+            
+            .mb-16 {
+                margin-bottom: 2rem !important;
+            }
+            
+            .mb-12 {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .mb-8 {
+                margin-bottom: 1rem !important;
+            }
+            
+            .py-20 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            .container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .lg\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .lg\:grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            .lg\:grid-cols-5 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .md\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .w-80, .h-80 {
+                width: 12rem !important;
+                height: 12rem !important;
+            }
+            
+            .w-64, .h-64 {
+                width: 10rem !important;
+                height: 10rem !important;
+            }
+            
+            .transform.scale-110 {
+                transform: scale(1) !important;
+            }
+            
+            .hidden.md\:flex {
+                display: none !important;
+            }
+            
+            .flex-col.sm\:flex-row {
+                flex-direction: column !important;
+            }
+            
+            .max-w-7xl, .max-w-6xl, .max-w-5xl, .max-w-4xl {
+                max-width: 100% !important;
+            }
+            
+            .floating-orbs {
+                display: none;
+            }
+            
+            .absolute.top-20, .absolute.top-40, .absolute.bottom-40, .absolute.bottom-20 {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .text-6xl, .text-7xl, .text-8xl {
+                font-size: 2rem !important;
+            }
+            
+            .text-5xl {
+                font-size: 1.75rem !important;
+            }
+            
+            .text-4xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .px-8 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .px-6 {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+            
+            .container {
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
+            }
+        }
+        
+        /* Countdown Timer Styles */
+        .countdown-timer {
+            background: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
+            border: 2px solid #dc2626;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .countdown-display {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .countdown-unit {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            min-width: 4rem;
+            text-align: center;
+        }
+        
+        .countdown-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            display: block;
+        }
+        
+        .countdown-label {
+            font-size: 0.75rem;
+            color: #fca5a5;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 480px) {
+            .countdown-display {
+                gap: 0.5rem;
+            }
+            
+            .countdown-unit {
+                min-width: 3rem;
+                padding: 0.5rem;
+            }
+            
+            .countdown-number {
+                font-size: 1.25rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.625rem;
+            }
+        }
     </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -1170,16 +1392,21 @@
         <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
         </svg><span>1000+ Happy Students</span>
        </div>
-      </div><!-- Urgency Timer -->
-      <div class="mt-12 p-6 bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-xl border border-red-500/30 rounded-2xl max-w-md mx-auto">
-       <div class="text-red-400 font-bold mb-2">
-        ⏰ Limited Time Offer
-       </div>
-       <div class="text-white text-lg">
-        This special price won't last forever!
-       </div>
-       <div class="text-sm text-gray-300 mt-2">
-        Join now and secure your spot at 50% off
+      </div><!-- Countdown Timer -->
+      <div class="mt-12 max-w-lg mx-auto">
+       <div class="countdown-timer">
+        <div class="text-white font-bold text-lg mb-2">
+         ⏰ OFFER EXPIRES IN:
+        </div>
+        <div class="countdown-display" id="countdownDisplay">
+         <div class="countdown-unit"><span class="countdown-number" id="minutes">20</span> <span class="countdown-label">MIN</span>
+         </div>
+         <div class="countdown-unit"><span class="countdown-number" id="seconds">00</span> <span class="countdown-label">SEC</span>
+         </div>
+        </div>
+        <div class="text-red-100 text-sm font-semibold">
+         Don't miss out on this exclusive 50% discount!
+        </div>
        </div>
       </div>
      </div>
@@ -1431,6 +1658,53 @@
                 }
             });
         });
+
+        // Countdown Timer Functionality
+        function startCountdown() {
+            // Check if countdown has already been started
+            const savedEndTime = localStorage.getItem('countdownEndTime');
+            let endTime;
+            
+            if (savedEndTime) {
+                endTime = new Date(savedEndTime);
+            } else {
+                // Set countdown for 20 minutes from now
+                endTime = new Date();
+                endTime.setMinutes(endTime.getMinutes() + 20);
+                localStorage.setItem('countdownEndTime', endTime.toISOString());
+            }
+            
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            
+            function updateCountdown() {
+                const now = new Date();
+                const timeLeft = endTime - now;
+                
+                if (timeLeft <= 0) {
+                    // Timer expired - reset for another 20 minutes
+                    endTime = new Date();
+                    endTime.setMinutes(endTime.getMinutes() + 20);
+                    localStorage.setItem('countdownEndTime', endTime.toISOString());
+                    return;
+                }
+                
+                const minutes = Math.floor(timeLeft / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                minutesElement.textContent = minutes.toString().padStart(2, '0');
+                secondsElement.textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            // Update immediately
+            updateCountdown();
+            
+            // Update every second
+            setInterval(updateCountdown, 1000);
+        }
+        
+        // Start countdown when page loads
+        startCountdown();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99823ff4e68459d8',t:'MTc2MjA3MjAxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'998255ce35b959d8',t:'MTc2MjA3MjkxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
