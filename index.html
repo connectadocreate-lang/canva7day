@@ -1,173 +1,391 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canva Mastery Course - Transform Your Design Skills</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canva Mastery Course - AI-Powered Design Training</title>
+  <meta name="description" content="Master Canva with AI-powered design techniques. Learn from Gaurav Kurmi, expert in graphic design, video editing, and AI creativity tools.">
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
         body {
             box-sizing: border-box;
-        }
-        
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-        
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
-        
-        /* Dark Animated Background */
-        .animated-bg {
-            background: linear-gradient(-45deg, #0f0f23, #1a1a2e, #16213e, #0f3460, #533483, #7209b7);
-            background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
-            position: relative;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 25%, #2d1b69 50%, #11998e 75%, #38ef7d 100%);
+            color: #ffffff;
             overflow-x: hidden;
-            min-height: 100vh;
+            position: relative;
         }
         
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 100% 0%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Floating Shapes */
-        .floating-shapes {
-            position: absolute;
+        body::before {
+            content: '';
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
             pointer-events: none;
-        }
-        
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 20s infinite linear;
-        }
-        
-        .shape:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            width: 80px;
-            height: 80px;
-            background: #fff;
-            border-radius: 50%;
-            animation-delay: 0s;
-        }
-        
-        .shape:nth-child(2) {
-            top: 60%;
-            left: 80%;
-            width: 120px;
-            height: 120px;
-            background: #fff;
-            border-radius: 20px;
-            animation-delay: 5s;
-        }
-        
-        .shape:nth-child(3) {
-            top: 80%;
-            left: 20%;
-            width: 60px;
-            height: 60px;
-            background: #fff;
-            transform: rotate(45deg);
-            animation-delay: 10s;
-        }
-        
-        .shape:nth-child(4) {
-            top: 30%;
-            left: 70%;
-            width: 100px;
-            height: 100px;
-            background: #fff;
-            border-radius: 50% 0 50% 0;
-            animation-delay: 15s;
-        }
-        
-        .shape:nth-child(5) {
-            top: 10%;
-            left: 50%;
-            width: 90px;
-            height: 90px;
-            background: #fff;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation-delay: 7s;
+            z-index: -1;
         }
         
         @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
-            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.3; }
-            100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
         
-        /* Particle System */
-        .particles {
+        @keyframes glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 60px #00d4ff;
+                text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #00d4ff;
+            }
+            50% { 
+                box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 30px #00d4ff;
+                text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 15px #00d4ff;
+            }
+        }
+        
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .modern-grid {
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .glow-border {
+            border: 2px solid #00d4ff;
+            box-shadow: 
+                0 0 20px rgba(0, 212, 255, 0.5),
+                inset 0 0 20px rgba(0, 212, 255, 0.1);
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #00d4ff;
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            transform: translateY(-10px);
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .glass-card:hover::before {
+            left: 100%;
+        }
+        
+        .modern-button {
+            position: relative;
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border: none;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+        
+        .modern-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+            background: linear-gradient(135deg, #0099cc 0%, #00d4ff 100%);
+        }
+        
+        .modern-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .modern-button:hover::before {
+            left: 100%;
+        }
+        
+        .outline-button {
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .outline-button:hover {
+            background: #00d4ff;
+            color: #0f0f23;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+        
+        .floating-orbs {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(45deg, #00d4ff, #ff6b9d);
+            border-radius: 50%;
+            animation: float 4s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #00d4ff 0%, #ff6b9d 50%, #c471ed 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        .modern-nav {
+            background: rgba(15, 15, 35, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .icon-wrapper {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            border-radius: 50%;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff6b9d 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon:hover {
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+        
+        .stats-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 107, 157, 0.1) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                radial-gradient(circle at 20% 20%, #00d4ff 2px, transparent 2px),
+                radial-gradient(circle at 80% 80%, #ff6b9d 2px, transparent 2px),
+                radial-gradient(circle at 60% 40%, #c471ed 1px, transparent 1px);
+            background-size: 120px 120px, 180px 180px, 100px 100px;
+            animation: float 20s linear infinite;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            margin: 60px 0;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .ai-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .tech-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(102, 126, 234, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+        
+        .neon-border {
+            border: 2px solid #667eea;
+            box-shadow: 
+                0 0 20px rgba(102, 126, 234, 0.5),
+                inset 0 0 20px rgba(102, 126, 234, 0.1);
+        }
+        
+        .holographic {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+        
+        .glitch-text {
+            position: relative;
+        }
+        
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
         }
         
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: particleFloat 8s infinite linear;
+        .glitch-text::before {
+            animation: glitch-1 0.5s infinite;
+            color: #ff0040;
+            z-index: -1;
         }
         
-        @keyframes particleFloat {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+        .glitch-text::after {
+            animation: glitch-2 0.5s infinite;
+            color: #00ffff;
+            z-index: -2;
         }
         
-        /* Glass Morphism Cards */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(114, 9, 183, 0.2);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        @keyframes glitch-1 {
+            0%, 14%, 15%, 49%, 50%, 99%, 100% {
+                transform: translate(0);
+            }
+            15%, 49% {
+                transform: translate(-2px, -1px);
+            }
         }
         
-        .glass-card:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(114, 9, 183, 0.2);
-            border-color: rgba(114, 9, 183, 0.4);
+        @keyframes glitch-2 {
+            0%, 20%, 21%, 62%, 63%, 99%, 100% {
+                transform: translate(0);
+            }
+            21%, 62% {
+                transform: translate(2px, 1px);
+            }
         }
         
-        /* Modern Buttons */
-        .modern-btn {
-            background: linear-gradient(135deg, #7209b7 0%, #533483 50%, #16213e 100%);
-            border: none;
-            border-radius: 50px;
-            padding: 16px 32px;
+        .cyber-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 2px solid #667eea;
             color: white;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(114, 9, 183, 0.3);
-            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
-        .modern-btn::before {
+        .cyber-button:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        .cyber-button::before {
             content: '';
             position: absolute;
             top: 0;
@@ -178,1294 +396,1041 @@
             transition: left 0.5s;
         }
         
-        .modern-btn:hover::before {
+        .cyber-button:hover::before {
             left: 100%;
         }
-        
-        .modern-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(114, 9, 183, 0.6);
-            background: linear-gradient(135deg, #8a2be2 0%, #6a4c93 50%, #2a2d5a 100%);
-        }
-        
-        .modern-btn:active {
-            transform: translateY(-1px);
-            box-shadow: 0 5px 15px rgba(114, 9, 183, 0.4);
-        }
-        
-        .modern-btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(114, 9, 183, 0.5);
-            color: white;
-            box-shadow: 0 4px 15px rgba(114, 9, 183, 0.2);
-        }
-        
-        .modern-btn-secondary:hover {
-            background: rgba(114, 9, 183, 0.2);
-            border-color: rgba(114, 9, 183, 0.8);
-            box-shadow: 0 8px 25px rgba(114, 9, 183, 0.4);
-        }
-        
-        /* Animations */
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .slide-in-left { animation: slideInLeft 0.8s ease-out; }
-        .slide-in-right { animation: slideInRight 0.8s ease-out; }
-        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
-        .bounce-animation { animation: bounce 2s infinite; }
-        .pulse-animation { animation: pulse 2s infinite; }
-        
-        /* Text Gradient */
-        .gradient-text {
-            background: linear-gradient(135deg, #7209b7 0%, #a855f7 30%, #ec4899 60%, #fbbf24 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientTextShift 3s ease-in-out infinite;
-        }
-        
-        @keyframes gradientTextShift {
-            0%, 100% { 
-                background: linear-gradient(135deg, #7209b7 0%, #a855f7 30%, #ec4899 60%, #fbbf24 100%);
-                -webkit-background-clip: text;
-                background-clip: text;
-            }
-            50% { 
-                background: linear-gradient(135deg, #fbbf24 0%, #ec4899 30%, #a855f7 60%, #7209b7 100%);
-                -webkit-background-clip: text;
-                background-clip: text;
-            }
-        }
-        
-        /* Mobile Optimizations */
-        @media (max-width: 768px) {
-            .glass-card {
-                margin: 0.5rem;
-                padding: 1rem;
-            }
-            
-            .modern-btn {
-                padding: 12px 24px;
-                font-size: 14px;
-            }
-            
-            .shape {
-                width: 40px !important;
-                height: 40px !important;
-            }
-        }
-        
-        /* Scroll Animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-        
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #7209b7, #533483);
-            border-radius: 4px;
-        }
-        
-        /* Star Sprinkle Animation */
-        .star-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        
-        .star {
-            position: absolute;
-            color: #ffd700;
-            font-size: 20px;
-            animation: starFall 2s ease-out forwards;
-            pointer-events: none;
-        }
-        
-        @keyframes starFall {
-            0% {
-                transform: translateY(-50px) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-        
-        /* Enhanced Floating Shapes for Dark Theme */
-        .floating-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        
-        .shape {
-            position: absolute;
-            opacity: 0.05;
-            animation: float 25s infinite linear;
-        }
-        
-        .shape:nth-child(1) {
-            top: 10%;
-            left: 5%;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(45deg, #7209b7, #533483);
-            border-radius: 50%;
-            animation-delay: 0s;
-        }
-        
-        .shape:nth-child(2) {
-            top: 70%;
-            left: 85%;
-            width: 150px;
-            height: 150px;
-            background: linear-gradient(45deg, #533483, #16213e);
-            border-radius: 30px;
-            animation-delay: 8s;
-        }
-        
-        .shape:nth-child(3) {
-            top: 90%;
-            left: 15%;
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(45deg, #16213e, #0f3460);
-            transform: rotate(45deg);
-            animation-delay: 15s;
-        }
-        
-        .shape:nth-child(4) {
-            top: 40%;
-            left: 75%;
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(45deg, #0f3460, #1a1a2e);
-            border-radius: 50% 0 50% 0;
-            animation-delay: 20s;
-        }
-        
-        .shape:nth-child(5) {
-            top: 20%;
-            left: 60%;
-            width: 110px;
-            height: 110px;
-            background: linear-gradient(45deg, #1a1a2e, #0f0f23);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation-delay: 12s;
-        }
-        
-        .shape:nth-child(6) {
-            top: 60%;
-            left: 10%;
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(45deg, #7209b7, #0f0f23);
-            border-radius: 20px;
-            animation-delay: 5s;
-        }
-        
-        @keyframes float {
-            0% { 
-                transform: translateY(0px) rotate(0deg) scale(1); 
-                opacity: 0.05; 
-            }
-            25% { 
-                transform: translateY(-150px) rotate(90deg) scale(1.1); 
-                opacity: 0.1; 
-            }
-            50% { 
-                transform: translateY(-300px) rotate(180deg) scale(0.9); 
-                opacity: 0.15; 
-            }
-            75% { 
-                transform: translateY(-450px) rotate(270deg) scale(1.2); 
-                opacity: 0.08; 
-            }
-            100% { 
-                transform: translateY(-600px) rotate(360deg) scale(1); 
-                opacity: 0; 
-            }
-        }
-        
-        /* Loading Animation */
-        .loading-dots {
-            display: inline-block;
-        }
-        
-        .loading-dots::after {
-            content: '';
-            animation: dots 2s infinite;
-        }
-        
-        @keyframes dots {
-            0%, 20% { content: ''; }
-            40% { content: '.'; }
-            60% { content: '..'; }
-            80%, 100% { content: '...'; }
-        }
     </style>
-</head>
-<body class="animated-bg">
-    <!-- Star Sprinkle Container -->
-    <div class="star-container" id="starContainer"></div>
-    
-    <!-- Animated Background Elements -->
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="font-mono antialiased"><!-- Modern Background Elements -->
+  <div class="floating-elements fixed inset-0 pointer-events-none"></div><!-- Floating Orbs -->
+  <div class="floating-orbs" style="top: 15%; left: 10%; animation-delay: 0s;"></div>
+  <div class="floating-orbs" style="top: 25%; left: 85%; animation-delay: 1s;"></div>
+  <div class="floating-orbs" style="top: 65%; left: 15%; animation-delay: 2s;"></div>
+  <div class="floating-orbs" style="top: 75%; left: 80%; animation-delay: 3s;"></div>
+  <div class="floating-orbs" style="top: 45%; left: 50%; animation-delay: 4s;"></div><!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 modern-nav">
+   <nav class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+     <div class="flex items-center space-x-4">
+      <div class="icon-wrapper w-12 h-12">
+       <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
+       </svg>
+      </div>
+      <div><span class="text-xl font-bold gradient-text">ADOLEARN</span>
+       <div class="text-xs text-gray-400">
+        MODERN DESIGN ACADEMY
+       </div>
+      </div>
+     </div>
+     <div class="hidden md:flex items-center space-x-8"><a href="#course" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Course</a> <a href="#overview" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Overview</a> <a href="#modules" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Modules</a> <a href="#instructor" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Instructor</a> <a href="#pricing" class="text-gray-300 hover:text-cyan-400 transition-colors font-medium">Pricing</a>
+     </div><a href="https://wa.me/8433415139?text=I%20want%20to%20join%20the%20Canva%20Mastery%20Course" target="_blank" rel="noopener noreferrer"> <button class="modern-button px-6 py-3 text-sm font-bold"> CONNECT </button> </a>
     </div>
-    
-    <!-- Particle System -->
-    <div class="particles" id="particles"></div>
-    
-    <!-- Header -->
-    <header class="glass-card sticky top-4 z-50 mx-4">
-        <nav class="px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3 slide-in-left">
-                    <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center bounce-animation">
-                        <span class="text-2xl">🚀</span>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-bold text-white">Canva Mastery</h1>
-                        <p class="text-sm text-white text-opacity-80">Design Like a Pro ✨</p>
-                    </div>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden glass-card p-2 text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-                
-                <div id="desktopMenu" class="hidden md:flex items-center space-x-6">
-                    <a href="#course" class="text-white text-opacity-80 hover:text-white transition-colors font-medium">Course</a>
-                    <a href="#curriculum" class="text-white text-opacity-80 hover:text-white transition-colors font-medium">Curriculum</a>
-                    <a href="#instructor" class="text-white text-opacity-80 hover:text-white transition-colors font-medium">Instructor</a>
-                    <a href="#testimonials" class="text-white text-opacity-80 hover:text-white transition-colors font-medium">Reviews</a>
-                    <a href="#pricing" class="text-white text-opacity-80 hover:text-white transition-colors font-medium">Pricing</a>
-                </div>
-                
-                <a href="https://wa.me/918433415139" target="_blank" rel="noopener noreferrer" class="hidden md:block modern-btn pulse-animation">
-                    Join Now 🚀
-                </a>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
-                <a href="#course" class="block text-white text-opacity-80 hover:text-white transition-colors py-2">Course Details</a>
-                <a href="#curriculum" class="block text-white text-opacity-80 hover:text-white transition-colors py-2">Curriculum</a>
-                <a href="#instructor" class="block text-white text-opacity-80 hover:text-white transition-colors py-2">Instructor</a>
-                <a href="#testimonials" class="block text-white text-opacity-80 hover:text-white transition-colors py-2">Reviews</a>
-                <a href="#pricing" class="block text-white text-opacity-80 hover:text-white transition-colors py-2">Pricing</a>
-                <a href="https://wa.me/918433415139" target="_blank" rel="noopener noreferrer" class="w-full modern-btn text-center mt-4">
-                    Join Now 🚀
-                </a>
-            </div>
-        </nav>
-    </header>
-
-    <main class="relative z-10">
-        <!-- Hero Section -->
-        <section class="py-20 px-4">
-            <div class="container mx-auto max-w-6xl">
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <div class="text-left slide-in-left">
-                        <div class="inline-block glass-card px-4 py-2 rounded-full mb-6 pulse-animation">
-                            <span class="text-sm font-semibold text-white">🔥 Limited Time - 60% OFF</span>
-                        </div>
-                        <h2 class="text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">Master Canva in Just <span class="gradient-text">7 Days</span></h2>
-                        <p class="text-xl mb-8 text-white text-opacity-90 leading-relaxed">Transform from beginner to Canva expert with our comprehensive course. Create stunning designs for social media, marketing, and business. 🎨✨</p>
-                        
-                        <div class="flex flex-wrap gap-3 mb-8">
-                            <div class="flex items-center space-x-2 glass-card px-4 py-2 rounded-full">
-                                <span class="text-yellow-400">⭐</span>
-                                <span class="font-semibold text-white">4.9/5 Rating</span>
-                            </div>
-                            <div class="flex items-center space-x-2 glass-card px-4 py-2 rounded-full">
-                                <span class="text-green-400">👥</span>
-                                <span class="font-semibold text-white">5000+ Students</span>
-                            </div>
-                            <div class="flex items-center space-x-2 glass-card px-4 py-2 rounded-full">
-                                <span class="text-blue-400">🎓</span>
-                                <span class="font-semibold text-white">Certificate Included</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                            <a href="https://wa.me/918433415139" target="_blank" rel="noopener noreferrer" class="modern-btn text-lg font-bold text-center">
-                                🚀 Join Now - ₹499 Only
-                            </a>
-                            <button onclick="downloadEbook()" class="modern-btn-secondary text-lg font-semibold text-center">
-                                📚 Free Guide
-                            </button>
-                        </div>
-                        
-                        <div class="flex flex-col sm:flex-row sm:items-center gap-6 text-white text-opacity-80">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-green-400">✓</span>
-                                <span>Instant Access</span>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="text-green-400">✓</span>
-                                <span>Lifetime Access</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Hero Visual -->
-                    <div class="relative slide-in-right">
-                        <div class="glass-card p-8 bounce-animation">
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
-                                    <div class="text-4xl mb-2">📱</div>
-                                    <h4 class="font-bold text-white">Social Media</h4>
-                                    <p class="text-sm text-white text-opacity-80">Instagram, Facebook, Twitter</p>
-                                </div>
-                                <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
-                                    <div class="text-4xl mb-2">💼</div>
-                                    <h4 class="font-bold text-white">Business</h4>
-                                    <p class="text-sm text-white text-opacity-80">Presentations, Logos</p>
-                                </div>
-                                <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
-                                    <div class="text-4xl mb-2">📊</div>
-                                    <h4 class="font-bold text-white">Marketing</h4>
-                                    <p class="text-sm text-white text-opacity-80">Ads, Banners, Flyers</p>
-                                </div>
-                                <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
-                                    <div class="text-4xl mb-2">🎨</div>
-                                    <h4 class="font-bold text-white">Creative</h4>
-                                    <p class="text-sm text-white text-opacity-80">Posters, Invitations</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Floating Elements -->
-                        <div class="absolute -top-4 -right-4 modern-btn text-sm bounce-animation">
-                            ⚡ Live Classes!
-                        </div>
-                        <div class="absolute -bottom-4 -left-4 modern-btn text-sm bounce-animation" style="animation-delay: 1s;">
-                            🎯 Hands-on Projects!
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Stats Section -->
-        <section class="py-16 px-4">
-            <div class="container mx-auto max-w-6xl">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                    <div class="glass-card p-6 text-center scroll-reveal">
-                        <div class="gradient-text text-4xl font-bold mb-2" data-target="5000">0</div>
-                        <p class="text-white font-semibold">Happy Students 😊</p>
-                    </div>
-                    <div class="glass-card p-6 text-center scroll-reveal">
-                        <div class="gradient-text text-4xl font-bold mb-2" data-target="7">0</div>
-                        <p class="text-white font-semibold">Video Lessons 🎥</p>
-                    </div>
-                    <div class="glass-card p-6 text-center scroll-reveal">
-                        <div class="gradient-text text-4xl font-bold mb-2" data-target="7">0</div>
-                        <p class="text-white font-semibold">Days Duration ⏰</p>
-                    </div>
-                    <div class="glass-card p-6 text-center scroll-reveal">
-                        <div class="gradient-text text-4xl font-bold mb-2" data-target="50">0</div>
-                        <p class="text-white font-semibold">Templates 🎨</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Course Overview -->
-        <section id="course" class="py-20 px-4">
-            <div class="container mx-auto max-w-6xl">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h3 class="text-5xl font-bold mb-4 text-white">Course Overview <span class="gradient-text">✨</span></h3>
-                    <p class="text-xl text-white text-opacity-90 max-w-3xl mx-auto">Everything you need to become a Canva design expert, from basics to advanced techniques 🚀</p>
-                </div>
-                
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <!-- Course Duration -->
-                    <div class="glass-card p-8 scroll-reveal">
-                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center text-2xl text-white mx-auto mb-4 pulse-animation">⏰</div>
-                        <h4 class="text-2xl font-bold text-center mb-4 text-white">Duration & Schedule</h4>
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center">
-                                <span class="text-white text-opacity-80">Total Duration:</span>
-                                <span class="font-bold text-white">7 Days ⚡</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-white text-opacity-80">Daily Classes:</span>
-                                <span class="font-bold text-white">1 Class 📚</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-white text-opacity-80">Class Duration:</span>
-                                <span class="font-bold text-white">1 Hour ⏱️</span>
-                            </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-white text-opacity-80">Total Hours:</span>
-                                <span class="font-bold text-white">7 Hours 🎯</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Class Timing -->
-                    <div class="glass-card p-8 scroll-reveal">
-                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center text-2xl text-white mx-auto mb-4 pulse-animation">🕐</div>
-                        <h4 class="text-2xl font-bold text-center mb-4 text-white">Class Timings</h4>
-                        <div class="space-y-4">
-                            <div class="glass-card p-6 text-center">
-                                <div class="font-bold text-white text-xl">Daily Classes 🎯</div>
-                                <div class="text-white text-lg font-semibold">7:00 PM - 8:00 PM</div>
-                                <div class="text-sm text-white text-opacity-80">Monday to Sunday</div>
-                                <div class="text-xs text-white text-opacity-70 mt-2">7 Consecutive Days ⚡</div>
-                            </div>
-                            <div class="glass-card p-4">
-                                <div class="font-bold text-white">Course Format 📚</div>
-                                <div class="text-white text-opacity-90">Live Interactive Sessions</div>
-                                <div class="text-xs text-white text-opacity-70">Recorded for later access 🎥</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- What You'll Learn -->
-                    <div class="glass-card p-8 scroll-reveal">
-                        <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center text-2xl text-white mx-auto mb-4 pulse-animation">🎯</div>
-                        <h4 class="text-2xl font-bold text-center mb-4 text-white">What You'll Master</h4>
-                        <ul class="space-y-3">
-                            <li class="flex items-center space-x-3">
-                                <span class="text-green-400 font-bold text-lg">✓</span>
-                                <span class="text-white text-opacity-90">Canva Interface & Tools 🛠️</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <span class="text-green-400 font-bold text-lg">✓</span>
-                                <span class="text-white text-opacity-90">Social Media Design 📱</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <span class="text-green-400 font-bold text-lg">✓</span>
-                                <span class="text-white text-opacity-90">Brand Identity Creation 🎨</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <span class="text-green-400 font-bold text-lg">✓</span>
-                                <span class="text-white text-opacity-90">Marketing Materials 📊</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <span class="text-green-400 font-bold text-lg">✓</span>
-                                <span class="text-white text-opacity-90">Animation & Video 🎬</span>
-                            </li>
-                            <li class="flex items-center space-x-3">
-                                <span class="text-green-400 font-bold text-lg">✓</span>
-                                <span class="text-white text-opacity-90">Print Design 🖨️</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Curriculum Section -->
-        <section id="curriculum" class="py-20 px-4">
-            <div class="container mx-auto max-w-6xl">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h3 class="text-5xl font-bold mb-4 text-white">Course Curriculum <span class="gradient-text">📚</span></h3>
-                    <p class="text-xl text-white text-opacity-90 max-w-3xl mx-auto">Comprehensive lessons designed to take you from beginner to expert ✨</p>
-                </div>
-                
-                <div class="max-w-4xl mx-auto">
-                    <div class="grid gap-8">
-                        <!-- Day 1 -->
-                        <div class="glass-card p-6 scroll-reveal">
-                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center font-bold shadow-lg pulse-animation">1</div>
-                                <div class="flex-1">
-                                    <h5 class="text-xl font-bold text-white">Day 1: Getting Started with Canva 🚀</h5>
-                                    <p class="text-sm text-white text-opacity-70 font-semibold">7:00 PM - 8:00 PM</p>
-                                </div>
-                            </div>
-                            <p class="text-white text-opacity-90 mb-3">Complete interface walkthrough, account setup, basic navigation, and understanding Canva's ecosystem</p>
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-white text-opacity-80">
-                                <span>⏱️ 60 mins</span>
-                                <span>🎥 Live Session + Practice</span>
-                            </div>
-                        </div>
-
-                        <!-- Day 2 -->
-                        <div class="glass-card p-6 scroll-reveal">
-                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center font-bold shadow-lg pulse-animation">2</div>
-                                <div class="flex-1">
-                                    <h5 class="text-xl font-bold text-white">Day 2: Design Principles & Templates 🎨</h5>
-                                    <p class="text-sm text-white text-opacity-70 font-semibold">7:00 PM - 8:00 PM</p>
-                                </div>
-                            </div>
-                            <p class="text-white text-opacity-90 mb-3">Color theory, typography basics, working with templates, and customizing design elements</p>
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-white text-opacity-80">
-                                <span>⏱️ 60 mins</span>
-                                <span>📚 Theory + Hands-on</span>
-                            </div>
-                        </div>
-
-                        <!-- Day 3 -->
-                        <div class="glass-card p-6 scroll-reveal">
-                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center font-bold shadow-lg pulse-animation">3</div>
-                                <div class="flex-1">
-                                    <h5 class="text-xl font-bold text-white">Day 3: Social Media Design Mastery 📱</h5>
-                                    <p class="text-sm text-white text-opacity-70 font-semibold">7:00 PM - 8:00 PM</p>
-                                </div>
-                            </div>
-                            <p class="text-white text-opacity-90 mb-3">Instagram posts, stories, Facebook covers, LinkedIn graphics, and social media best practices</p>
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-white text-opacity-80">
-                                <span>⏱️ 60 mins</span>
-                                <span>📱 Live Projects</span>
-                            </div>
-                        </div>
-
-                        <!-- Day 4 -->
-                        <div class="glass-card p-6 scroll-reveal">
-                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center font-bold shadow-lg pulse-animation">4</div>
-                                <div class="flex-1">
-                                    <h5 class="text-xl font-bold text-white">Day 4: Business & Marketing Materials 💼</h5>
-                                    <p class="text-sm text-white text-opacity-70 font-semibold">7:00 PM - 8:00 PM</p>
-                                </div>
-                            </div>
-                            <p class="text-white text-opacity-90 mb-3">Business cards, flyers, brochures, presentations, and professional marketing content</p>
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-white text-opacity-80">
-                                <span>⏱️ 60 mins</span>
-                                <span>💼 Business Focus</span>
-                            </div>
-                        </div>
-
-                        <!-- Day 5 -->
-                        <div class="glass-card p-6 scroll-reveal">
-                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center font-bold shadow-lg pulse-animation">5</div>
-                                <div class="flex-1">
-                                    <h5 class="text-xl font-bold text-white">Day 5: Logo & Brand Identity Creation 🏷️</h5>
-                                    <p class="text-sm text-white text-opacity-70 font-semibold">7:00 PM - 8:00 PM</p>
-                                </div>
-                            </div>
-                            <p class="text-white text-opacity-90 mb-3">Creating logos, brand kits, consistent visual identity, and brand guidelines</p>
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-white text-opacity-80">
-                                <span>⏱️ 60 mins</span>
-                                <span>🎨 Brand Building</span>
-                            </div>
-                        </div>
-
-                        <!-- Day 6 -->
-                        <div class="glass-card p-6 scroll-reveal">
-                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center font-bold shadow-lg pulse-animation">6</div>
-                                <div class="flex-1">
-                                    <h5 class="text-xl font-bold text-white">Day 6: Advanced Features & Animation 🎬</h5>
-                                    <p class="text-sm text-white text-opacity-70 font-semibold">7:00 PM - 8:00 PM</p>
-                                </div>
-                            </div>
-                            <p class="text-white text-opacity-90 mb-3">Photo editing, background removal, animations, video creation, and advanced Canva features</p>
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-white text-opacity-80">
-                                <span>⏱️ 60 mins</span>
-                                <span>🎬 Advanced Techniques</span>
-                            </div>
-                        </div>
-
-                        <!-- Day 7 -->
-                        <div class="glass-card p-6 scroll-reveal">
-                            <div class="flex flex-col sm:flex-row sm:items-center mb-4 gap-3">
-                                <div class="w-12 h-12 bg-white bg-opacity-20 text-white rounded-full flex items-center justify-center font-bold shadow-lg pulse-animation">7</div>
-                                <div class="flex-1">
-                                    <h5 class="text-xl font-bold text-white">Day 7: Portfolio Building & Monetization 💰</h5>
-                                    <p class="text-sm text-white text-opacity-70 font-semibold">7:00 PM - 8:00 PM</p>
-                                </div>
-                            </div>
-                            <p class="text-white text-opacity-90 mb-3">Building professional portfolio, freelancing tips, client work strategies, and monetizing your skills</p>
-                            <div class="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-white text-opacity-80">
-                                <span>⏱️ 60 mins</span>
-                                <span>💰 Career Focus</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Bonus Templates Section -->
-        <section class="py-20 px-4">
-            <div class="container mx-auto max-w-6xl text-center">
-                <div class="max-w-4xl mx-auto">
-                    <h3 class="text-5xl font-bold mb-6 text-white">Bonus: 50+ Templates Pack <span class="gradient-text">🎁</span></h3>
-                    <p class="text-xl mb-8 text-white text-opacity-90">Get our exclusive 50+ design templates pack after completing the course! Perfect for all your design needs. ✨</p>
-                    
-                    <div class="glass-card p-8 bounce-animation max-w-2xl mx-auto scroll-reveal">
-                        <div class="text-6xl mb-4">🎨</div>
-                        <h4 class="text-2xl font-bold mb-6 text-white">What's Included:</h4>
-                        <div class="grid md:grid-cols-2 gap-4 text-left mb-8">
-                            <div class="space-y-3">
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-yellow-400">✓</span>
-                                    <span class="text-white text-opacity-90">50+ Premium Templates 🎯</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-yellow-400">✓</span>
-                                    <span class="text-white text-opacity-90">Social Media Pack 📱</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-yellow-400">✓</span>
-                                    <span class="text-white text-opacity-90">Business Templates 💼</span>
-                                </div>
-                            </div>
-                            <div class="space-y-3">
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-yellow-400">✓</span>
-                                    <span class="text-white text-opacity-90">Marketing Materials 📊</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-yellow-400">✓</span>
-                                    <span class="text-white text-opacity-90">Brand Identity Kit 🏷️</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-yellow-400">✓</span>
-                                    <span class="text-white text-opacity-90">Pro Design Tips 💡</span>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/918433415139" target="_blank" rel="noopener noreferrer" class="modern-btn text-lg font-bold">
-                            🚀 Join Course to Get Templates
-                        </a>
-                        <p class="text-sm text-white text-opacity-70 mt-4">Templates included with course enrollment! 🎉</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Instructor Section -->
-        <section id="instructor" class="py-20 px-4">
-            <div class="container mx-auto max-w-6xl">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h3 class="text-5xl font-bold mb-4 text-white">Meet Your Instructor</h3>
-                    <p class="text-xl text-white text-opacity-90">Learn from industry experts with years of design experience</p>
-                </div>
-                
-                <div class="max-w-4xl mx-auto">
-                    <div class="glass-card p-12 scroll-reveal">
-                        <div class="grid md:grid-cols-2 gap-12 items-center">
-                            <div class="text-center">
-                                <div class="w-48 h-48 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white text-6xl mx-auto mb-6 bounce-animation">
-                                    👨‍🎨
-                                </div>
-                                <div class="space-y-4">
-                                    <div class="glass-card p-4 rounded-lg">
-                                        <div class="font-bold text-white">3+ Years Experience</div>
-                                        <div class="text-sm text-white text-opacity-80">Professional Designer</div>
-                                    </div>
-                                    <div class="glass-card p-4 rounded-lg">
-                                        <div class="font-bold text-white">1000+ Students</div>
-                                        <div class="text-sm text-white text-opacity-80">Taught Worldwide</div>
-                                    </div>
-                                    <div class="glass-card p-4 rounded-lg">
-                                        <div class="font-bold text-white">4.9/5 Rating</div>
-                                        <div class="text-sm text-white text-opacity-80">Student Reviews</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div>
-                                <h4 class="text-3xl font-bold text-white mb-4">Gaurav Kurmi</h4>
-                                <p class="text-lg gradient-text font-semibold mb-6">Senior Graphic Designer & Canva Expert</p>
-                                <p class="text-white text-opacity-90 mb-6 leading-relaxed">
-                                    With over 3+ years of experience in graphic design and digital marketing, Gaurav has helped thousands of students master Canva. He has worked with top brands and agencies, creating stunning visual content that drives results.
-                                </p>
-                                <div class="space-y-4">
-                                    <h5 class="font-bold text-white">Expertise:</h5>
-                                    <div class="grid grid-cols-2 gap-4">
-                                        <div class="flex items-center space-x-2">
-                                            <span class="text-purple-400">•</span>
-                                            <span class="text-white text-opacity-90">Brand Design</span>
-                                        </div>
-                                        <div class="flex items-center space-x-2">
-                                            <span class="text-purple-400">•</span>
-                                            <span class="text-white text-opacity-90">Social Media</span>
-                                        </div>
-                                        <div class="flex items-center space-x-2">
-                                            <span class="text-purple-400">•</span>
-                                            <span class="text-white text-opacity-90">Digital Marketing</span>
-                                        </div>
-                                        <div class="flex items-center space-x-2">
-                                            <span class="text-purple-400">•</span>
-                                            <span class="text-white text-opacity-90">UI/UX Design</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials -->
-        <section id="testimonials" class="py-20 px-4">
-            <div class="container mx-auto max-w-6xl">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h3 class="text-5xl font-bold mb-4 text-white">Student Success Stories</h3>
-                    <p class="text-xl text-white text-opacity-90">See what our students are saying about the course</p>
-                </div>
-                
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="glass-card p-6 scroll-reveal">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                R
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-white">Rahul Verma</h5>
-                                <p class="text-sm text-white text-opacity-80">Digital Marketer</p>
-                            </div>
-                        </div>
-                        <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                        <p class="text-white text-opacity-90">"This course transformed my design skills completely! I went from zero to creating professional social media graphics for my clients. The step-by-step approach is perfect."</p>
-                    </div>
-                    
-                    <div class="glass-card p-6 scroll-reveal">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                S
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-white">Sneha Patel</h5>
-                                <p class="text-sm text-white text-opacity-80">Small Business Owner</p>
-                            </div>
-                        </div>
-                        <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                        <p class="text-white text-opacity-90">"I saved thousands on design costs! Now I create all my marketing materials myself. The course is worth every penny and the instructor is amazing."</p>
-                    </div>
-                    
-                    <div class="glass-card p-6 scroll-reveal">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                A
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-white">Amit Kumar</h5>
-                                <p class="text-sm text-white text-opacity-80">Freelance Designer</p>
-                            </div>
-                        </div>
-                        <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                        <p class="text-white text-opacity-90">"Started freelancing after this course and now earning ₹30,000+ monthly! The portfolio building session was incredibly valuable."</p>
-                    </div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-8 mt-12">
-                    <div class="glass-card p-6 scroll-reveal">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                M
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-white">Meera Singh</h5>
-                                <p class="text-sm text-white text-opacity-80">Content Creator</p>
-                            </div>
-                        </div>
-                        <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                        <p class="text-white text-opacity-90">"My Instagram engagement increased by 300% after applying the design principles from this course. The social media module is pure gold!"</p>
-                    </div>
-                    
-                    <div class="glass-card p-6 scroll-reveal">
-                        <div class="flex items-center mb-4">
-                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                                V
-                            </div>
-                            <div>
-                                <h5 class="font-bold text-white">Vikash Gupta</h5>
-                                <p class="text-sm text-white text-opacity-80">Startup Founder</p>
-                            </div>
-                        </div>
-                        <div class="text-yellow-400 mb-4">⭐⭐⭐⭐⭐</div>
-                        <p class="text-white text-opacity-90">"Created our entire brand identity using Canva after this course. Saved us lakhs in design costs and the results are professional-grade!"</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section id="pricing" class="py-20 px-4">
-            <div class="container mx-auto max-w-6xl text-center">
-                <h3 class="text-5xl font-bold mb-6 text-white">Special Launch Offer <span class="gradient-text">🚀</span></h3>
-                <p class="text-xl mb-12 text-white text-opacity-90">Limited time pricing - Save 60% on the regular price! ⚡</p>
-                
-                <div class="max-w-2xl mx-auto">
-                    <div class="glass-card p-12 shadow-2xl relative scroll-reveal">
-                        <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 modern-btn text-sm pulse-animation">
-                            🔥 60% OFF - Limited Time
-                        </div>
-                        
-                        <div class="mb-8 mt-0">
-                            <div class="text-6xl font-bold gradient-text mb-4">₹499</div>
-                            <div class="text-2xl text-white text-opacity-60 line-through mb-2">₹1,249</div>
-                            <p class="text-lg text-white text-opacity-90">One-time payment • Lifetime access ✨</p>
-                        </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-6 mb-8">
-                            <div class="text-left space-y-3">
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-green-400 font-bold">✓</span>
-                                    <span class="text-white text-opacity-90">7 Hours Live Training 🎯</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-green-400 font-bold">✓</span>
-                                    <span class="text-white text-opacity-90">7 Video Lessons 🎥</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-green-400 font-bold">✓</span>
-                                    <span class="text-white text-opacity-90">50+ Design Templates 🎨</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-green-400 font-bold">✓</span>
-                                    <span class="text-white text-opacity-90">Bonus Templates Pack 🎁</span>
-                                </div>
-                            </div>
-                            <div class="text-left space-y-3">
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-green-400 font-bold">✓</span>
-                                    <span class="text-white text-opacity-90">Certificate of Completion 🏆</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-green-400 font-bold">✓</span>
-                                    <span class="text-white text-opacity-90">Lifetime Community Access 👥</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-green-400 font-bold">✓</span>
-                                    <span class="text-white text-opacity-90">Direct Instructor Support 💬</span>
-                                </div>
-                                <div class="flex items-center space-x-3">
-                                    <span class="text-green-400 font-bold">✓</span>
-                                    <span class="text-white text-opacity-90">Recorded Sessions 📹</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <a href="https://wa.me/918433415139" target="_blank" rel="noopener noreferrer" class="w-full modern-btn text-xl font-bold mb-6 text-center block py-6">
-                            🚀 Join Now - ₹499 Only
-                        </a>
-                        
-                        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-white text-opacity-70">
-                            <div class="flex items-center space-x-2">
-                                <span class="text-green-400">🔒</span>
-                                <span>Secure Payment</span>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="text-blue-400">💳</span>
-                                <span>All Payment Methods</span>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <span class="text-purple-400">⚡</span>
-                                <span>Instant Access</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="mt-12 text-center scroll-reveal">
-                    <p class="text-lg text-white text-opacity-90 mb-4">⏰ Offer expires in: <span id="countdown" class="font-bold gradient-text">23:59:45</span></p>
-                    <p class="text-sm text-white text-opacity-80">Join 5000+ students who have already transformed their design skills! 🎉</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section class="py-20 px-4">
-            <div class="container mx-auto max-w-6xl">
-                <div class="text-center mb-16 scroll-reveal">
-                    <h3 class="text-5xl font-bold mb-4 text-white">Frequently Asked Questions</h3>
-                    <p class="text-xl text-white text-opacity-90">Got questions? We've got answers!</p>
-                </div>
-                
-                <div class="max-w-4xl mx-auto space-y-6">
-                    <div class="glass-card p-6 scroll-reveal">
-                        <button onclick="toggleFAQ(1)" class="w-full text-left flex items-center justify-between">
-                            <h4 class="text-lg font-bold text-white">Do I need any prior design experience?</h4>
-                            <span class="text-2xl text-white">+</span>
-                        </button>
-                        <div id="faq1" class="hidden mt-4 text-white text-opacity-90">
-                            Not at all! This course is designed for complete beginners. We start from the very basics and gradually build up to advanced techniques. No prior design experience is required.
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card p-6 scroll-reveal">
-                        <button onclick="toggleFAQ(2)" class="w-full text-left flex items-center justify-between">
-                            <h4 class="text-lg font-bold text-white">What if I miss a live class?</h4>
-                            <span class="text-2xl text-white">+</span>
-                        </button>
-                        <div id="faq2" class="hidden mt-4 text-white text-opacity-90">
-                            All live classes are recorded and available for lifetime access. You can watch them anytime at your own pace. We also provide class notes and resources.
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card p-6 scroll-reveal">
-                        <button onclick="toggleFAQ(3)" class="w-full text-left flex items-center justify-between">
-                            <h4 class="text-lg font-bold text-white">Do I need Canva Pro subscription?</h4>
-                            <span class="text-2xl text-white">+</span>
-                        </button>
-                        <div id="faq3" class="hidden mt-4 text-white text-opacity-90">
-                            The course covers both free and pro features. While Canva Pro is recommended for advanced features, you can complete most of the course with the free version.
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card p-6 scroll-reveal">
-                        <button onclick="toggleFAQ(4)" class="w-full text-left flex items-center justify-between">
-                            <h4 class="text-lg font-bold text-white">Is there a money-back guarantee?</h4>
-                            <span class="text-2xl text-white">+</span>
-                        </button>
-                        <div id="faq4" class="hidden mt-4 text-white text-opacity-90">
-                            Yes! We offer a 30-day money-back guarantee. If you're not satisfied with the course, we'll refund your full payment, no questions asked.
-                        </div>
-                    </div>
-                    
-                    <div class="glass-card p-6 scroll-reveal">
-                        <button onclick="toggleFAQ(5)" class="w-full text-left flex items-center justify-between">
-                            <h4 class="text-lg font-bold text-white">Will I get a certificate?</h4>
-                            <span class="text-2xl text-white">+</span>
-                        </button>
-                        <div id="faq5" class="hidden mt-4 text-white text-opacity-90">
-                            Yes! Upon successful completion of the course and assignments, you'll receive a certificate of completion that you can add to your portfolio or LinkedIn profile.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-16 px-4">
-        <div class="container mx-auto max-w-6xl">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-12 h-12 bg-white bg-opacity-20 flex items-center justify-center rounded-full">
-                            <span class="text-2xl">🚀</span>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white">Canva Mastery</h3>
-                            <p class="text-sm text-white text-opacity-80">Design Like a Pro ✨</p>
-                        </div>
-                    </div>
-                    <p class="text-white text-opacity-90 mb-6">Transform your design skills and create stunning visuals that captivate your audience. 🎨</p>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-4 text-white">Contact Info 📞</h4>
-                    <div class="space-y-3 text-white text-opacity-90">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-lg">📧</span>
-                            <span>connectadocreate@gmail.com</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-lg">📱</span>
-                            <span>+91 8433415139</span>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-lg">⏰</span>
-                            <span>7:00 PM TO 8:00 PM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="glass-card mt-12 p-6 text-center">
-                <p class="text-white text-opacity-80">&copy; 2025 Canva Mastery Course. All rights reserved. | Adolearn by Gaurav Kurmi ✨</p>
-            </div>
+   </nav>
+  </header><!-- Hero Section -->
+  <section class="min-h-full relative overflow-hidden pt-20"><!-- Animated Background -->
+   <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900"></div>
+   <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=" 60 height="60" viewbox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" %3e%3cg fill="none" fill-rule="evenodd" fill-opacity="0.05" %3e%3ccircle cx="30" cy="30" r="2" %3e%3c g%3e%3c svg%3e)] animate-pulse></div><!-- Floating Geometric Shapes -->
+   <div class="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-20 animate-bounce" style="animation-delay: 0s;"></div>
+   <div class="absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-pink-400 to-purple-500 transform rotate-45 opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+   <div class="absolute bottom-40 left-20 w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-20 animate-bounce" style="animation-delay: 2s;"></div>
+   <div class="absolute bottom-20 right-40 w-24 h-24 bg-gradient-to-r from-green-400 to-teal-500 transform rotate-12 opacity-20 animate-pulse" style="animation-delay: 3s;"></div>
+   <div class="container mx-auto px-6 py-20 relative z-10">
+    <div class="max-w-7xl mx-auto"><!-- Hero Content -->
+     <div class="text-center mb-16 slide-in-left">
+      <div class="mb-8"><span class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider shadow-2xl">
+        <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg> PREMIUM DESIGN MASTERY COURSE </span>
+      </div>
+      <h1 id="hero-headline" class="text-6xl md:text-8xl font-black mb-8 leading-tight"><span class="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-pulse">Master Canva</span><br><span class="text-white drop-shadow-2xl">Like a Pro Designer</span></h1>
+      <p id="hero-tagline" class="text-2xl md:text-3xl mb-12 text-gray-200 leading-relaxed max-w-4xl mx-auto font-light">Transform from beginner to expert with our comprehensive AI-powered design course</p><!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"><a href="https://forms.gle/ZaV8FR681rmBHscM7" target="_blank" rel="noopener noreferrer"> <button id="cta-button" class="group relative px-12 py-5 text-xl font-bold text-white bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full shadow-2xl hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-300 overflow-hidden"> <span class="relative z-10">Start Your Journey</span>
+         <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div></button> </a> <a href="https://wa.me/8433415139?text=I%20want%20to%20know%20more%20about%20the%20Canva%20course" target="_blank" rel="noopener noreferrer"> <button class="group px-12 py-5 text-xl font-bold text-cyan-400 border-2 border-cyan-400 rounded-full hover:bg-cyan-400 hover:text-black transition-all duration-300 transform hover:scale-105"> Learn More </button> </a>
+      </div>
+     </div><!-- Hero Visual Elements -->
+     <div class="relative slide-in-right">
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"><!-- Feature Card 1 -->
+       <div class="group relative bg-gradient-to-br from-cyan-500/10 to-blue-600/10 backdrop-blur-xl border border-cyan-500/20 rounded-3xl p-8 hover:border-cyan-400/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+        <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10">
+         <div class="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-500">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+          </svg>
+         </div>
+         <h3 class="text-2xl font-bold text-white mb-4">Expert Training</h3>
+         <p class="text-gray-300 leading-relaxed">Learn from industry professionals with years of design experience</p>
         </div>
-    </footer>
+       </div><!-- Feature Card 2 -->
+       <div class="group relative bg-gradient-to-br from-purple-500/10 to-pink-600/10 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 hover:border-purple-400/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10">
+         <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-500">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+         </div>
+         <h3 class="text-2xl font-bold text-white mb-4">Hands-on Projects</h3>
+         <p class="text-gray-300 leading-relaxed">Build real-world projects that showcase your growing design skills</p>
+        </div>
+       </div><!-- Feature Card 3 -->
+       <div class="group relative bg-gradient-to-br from-green-500/10 to-teal-600/10 backdrop-blur-xl border border-green-500/20 rounded-3xl p-8 hover:border-green-400/50 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="relative z-10">
+         <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-teal-500 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-500">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+         </div>
+         <h3 class="text-2xl font-bold text-white mb-4">Lifetime Access</h3>
+         <p class="text-gray-300 leading-relaxed">Get unlimited access to all course materials and future updates</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Course Features Section -->
+  <section id="course" class="py-20 relative">
+   <div class="section-divider"></div>
+   <div class="container mx-auto px-6">
+    <div class="text-center mb-16 fade-in-up">
+     <h2 class="text-4xl md:text-6xl font-bold mb-6"><span class="gradient-text">COURSE FEATURES</span></h2>
+     <p class="text-gray-300 text-xl">Professional training modules for modern designers</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+     <div class="glass-card p-8 fade-in-up" style="animation-delay: 0.1s">
+      <div class="feature-icon">
+       <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-4 text-white">MODERN WORKFLOWS</h3>
+      <p class="text-gray-300 leading-relaxed">Master contemporary design workflows and professional techniques for efficient creative production</p>
+     </div>
+     <div class="glass-card p-8 fade-in-up" style="animation-delay: 0.2s">
+      <div class="feature-icon">
+       <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-4 text-white">SMART AUTOMATION</h3>
+      <p class="text-gray-300 leading-relaxed">Learn advanced automation techniques and batch processing for maximum design efficiency</p>
+     </div>
+     <div class="glass-card p-8 fade-in-up" style="animation-delay: 0.3s">
+      <div class="feature-icon">
+       <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-4 text-white">CREATIVE EXCELLENCE</h3>
+      <p class="text-gray-300 leading-relaxed">Develop exceptional creative skills with industry-standard design principles and techniques</p>
+     </div>
+     <div class="glass-card p-8 fade-in-up" style="animation-delay: 0.4s">
+      <div class="feature-icon">
+       <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-4 text-white">DATA-DRIVEN DESIGN</h3>
+      <p class="text-gray-300 leading-relaxed">Create designs based on analytics, user behavior, and performance metrics for better results</p>
+     </div>
+     <div class="glass-card p-8 fade-in-up" style="animation-delay: 0.5s">
+      <div class="feature-icon">
+       <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM12 13.5l3.5 2.5L12 18.5 8.5 16l3.5-2.5z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-4 text-white">MULTI-PLATFORM DESIGN</h3>
+      <p class="text-gray-300 leading-relaxed">Master cross-platform design consistency and optimization for all digital channels</p>
+     </div>
+     <div class="glass-card p-8 fade-in-up" style="animation-delay: 0.6s">
+      <div class="feature-icon">
+       <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-bold mb-4 text-white">FUTURE-READY SKILLS</h3>
+      <p class="text-gray-300 leading-relaxed">Stay ahead with cutting-edge design trends and emerging creative technologies</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Course Overview Section -->
+  <section id="overview" class="py-20 relative"><!-- Animated Background -->
+   <div class="absolute inset-0 bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 opacity-50"></div>
+   <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=" 40 height="40" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" %3e%3cg fill="%23ffffff" fill-opacity="0.03" %3e%3cpath d="M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z" %3e%3c g%3e%3c svg%3e)]></div>
+   <div class="container mx-auto px-6 relative z-10">
+    <div class="text-center mb-20 fade-in-up">
+     <div class="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold mb-6">
+      COURSE DETAILS
+     </div>
+     <h2 class="text-5xl md:text-7xl font-black mb-6"><span class="bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">Course Overview</span></h2>
+     <p class="text-gray-300 text-2xl max-w-3xl mx-auto">Everything you need to know about our comprehensive design training program</p>
+    </div>
+    <div class="max-w-7xl mx-auto"><!-- Main Stats Grid -->
+     <div class="grid lg:grid-cols-4 gap-8 mb-20"><!-- Duration Card -->
+      <div class="group relative bg-gradient-to-br from-orange-500/10 to-red-600/10 backdrop-blur-xl border border-orange-500/20 rounded-3xl p-8 hover:border-orange-400/50 transition-all duration-500 transform hover:scale-105 fade-in-up" style="animation-delay: 0.1s">
+       <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       <div class="relative z-10 text-center">
+        <div class="w-20 h-20 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:rotate-12 transition-transform duration-500">
+         <svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+         </svg>
+        </div>
+        <h3 class="text-3xl font-black text-orange-400 mb-2">7 Days</h3>
+        <p class="text-gray-300 font-medium">Total Duration</p>
+       </div>
+      </div><!-- Classes Card -->
+      <div class="group relative bg-gradient-to-br from-purple-500/10 to-indigo-600/10 backdrop-blur-xl border border-purple-500/20 rounded-3xl p-8 hover:border-purple-400/50 transition-all duration-500 transform hover:scale-105 fade-in-up" style="animation-delay: 0.2s">
+       <div class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       <div class="relative z-10 text-center">
+        <div class="w-20 h-20 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:rotate-12 transition-transform duration-500">
+         <svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+        </div>
+        <h3 class="text-3xl font-black text-purple-400 mb-2">1 Hour</h3>
+        <p class="text-gray-300 font-medium">Daily Classes</p>
+       </div>
+      </div><!-- Timing Card -->
+      <div class="group relative bg-gradient-to-br from-pink-500/10 to-rose-600/10 backdrop-blur-xl border border-pink-500/20 rounded-3xl p-8 hover:border-pink-400/50 transition-all duration-500 transform hover:scale-105 fade-in-up" style="animation-delay: 0.3s">
+       <div class="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       <div class="relative z-10 text-center">
+        <div class="w-20 h-20 bg-gradient-to-r from-pink-400 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:rotate-12 transition-transform duration-500">
+         <svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+         </svg>
+        </div>
+        <h3 class="text-3xl font-black text-pink-400 mb-2">7-8 PM</h3>
+        <p class="text-gray-300 font-medium">Evening Classes</p>
+       </div>
+      </div><!-- Format Card -->
+      <div class="group relative bg-gradient-to-br from-teal-500/10 to-cyan-600/10 backdrop-blur-xl border border-teal-500/20 rounded-3xl p-8 hover:border-teal-400/50 transition-all duration-500 transform hover:scale-105 fade-in-up" style="animation-delay: 0.4s">
+       <div class="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+       <div class="relative z-10 text-center">
+        <div class="w-20 h-20 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:rotate-12 transition-transform duration-500">
+         <svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+         </svg>
+        </div>
+        <h3 class="text-3xl font-black text-teal-400 mb-2">Live</h3>
+        <p class="text-gray-300 font-medium">Interactive Sessions</p>
+       </div>
+      </div>
+     </div><!-- Skills Mastery Section -->
+     <div class="relative bg-gradient-to-br from-gray-900/50 to-black/50 backdrop-blur-xl border border-gray-700/30 rounded-3xl p-12 fade-in-up" style="animation-delay: 0.5s">
+      <div class="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-purple-500/5 to-pink-500/5 rounded-3xl"></div>
+      <div class="relative z-10">
+       <div class="text-center mb-12">
+        <h3 class="text-4xl font-black mb-4"><span class="bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent">Skills You'll Master</span></h3>
+        <p class="text-gray-300 text-xl">Comprehensive skill development across all design disciplines</p>
+       </div>
+       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="group flex items-center space-x-4 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-orange-500/10 hover:to-red-500/10 transition-all duration-300">
+         <div class="w-12 h-12 bg-gradient-to-r from-orange-400 to-red-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+          </svg>
+         </div><span class="text-lg text-white font-semibold">Canva Interface &amp; Advanced Tools</span>
+        </div>
+        <div class="group flex items-center space-x-4 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-indigo-500/10 transition-all duration-300">
+         <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-indigo-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
+          </svg>
+         </div><span class="text-lg text-white font-semibold">Social Media Design Mastery</span>
+        </div>
+        <div class="group flex items-center space-x-4 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-pink-500/10 hover:to-rose-500/10 transition-all duration-300">
+         <div class="w-12 h-12 bg-gradient-to-r from-pink-400 to-rose-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
+          </svg>
+         </div><span class="text-lg text-white font-semibold">Brand Identity Creation</span>
+        </div>
+        <div class="group flex items-center space-x-4 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-teal-500/10 hover:to-cyan-500/10 transition-all duration-300">
+         <div class="w-12 h-12 bg-gradient-to-r from-teal-400 to-cyan-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+         </div><span class="text-lg text-white font-semibold">Marketing Materials Design</span>
+        </div>
+        <div class="group flex items-center space-x-4 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-yellow-500/10 hover:to-orange-500/10 transition-all duration-300">
+         <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+          </svg>
+         </div><span class="text-lg text-white font-semibold">Animation &amp; Video Editing</span>
+        </div>
+        <div class="group flex items-center space-x-4 p-4 rounded-2xl hover:bg-gradient-to-r hover:from-green-500/10 hover:to-emerald-500/10 transition-all duration-300">
+         <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd" />
+          </svg>
+         </div><span class="text-lg text-white font-semibold">Professional Print Design</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Bonus Templates Section -->
+  <section class="py-20 relative overflow-hidden"><!-- Animated Background -->
+   <div class="absolute inset-0 bg-gradient-to-br from-yellow-900 via-orange-900 to-red-900"></div>
+   <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=" 60 height="60" viewbox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" %3e%3cg fill="none" fill-rule="evenodd" fill-opacity="0.05" %3e%3cpath d="M30 30c0-8.3-6.7-15-15-15s-15 6.7-15 15 6.7 15 15 15 15-6.7 15-15zm15 0c0-8.3-6.7-15-15-15s-15 6.7-15 15 6.7 15 15 15 15-6.7 15-15z" %3e%3c g%3e%3c svg%3e)] animate-pulse></div><!-- Floating Gift Elements -->
+   <div class="absolute top-20 left-16 w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg opacity-20 animate-bounce transform rotate-12" style="animation-delay: 0s; animation-duration: 3s;"></div>
+   <div class="absolute top-40 right-20 w-20 h-20 bg-gradient-to-r from-orange-400 to-red-500 rounded-full opacity-20 animate-pulse" style="animation-delay: 1s; animation-duration: 4s;"></div>
+   <div class="absolute bottom-32 left-20 w-12 h-12 bg-gradient-to-r from-red-400 to-pink-500 rounded-lg opacity-20 animate-bounce transform -rotate-12" style="animation-delay: 2s; animation-duration: 5s;"></div>
+   <div class="absolute bottom-20 right-32 w-24 h-24 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full opacity-20 animate-pulse" style="animation-delay: 3s; animation-duration: 3.5s;"></div>
+   <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-6xl mx-auto">
+     <div class="text-center mb-16 fade-in-up">
+      <div class="mb-8"><span class="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider shadow-2xl animate-pulse"> 🎁 EXCLUSIVE BONUS PACK </span>
+      </div>
+      <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight"><span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent animate-pulse">Bonus: 50+</span><br><span class="text-white drop-shadow-2xl">Templates Pack 🎁</span></h2>
+      <p class="text-2xl md:text-3xl mb-12 text-gray-200 leading-relaxed max-w-4xl mx-auto font-light">Get our exclusive 50+ design templates pack after completing the course! Perfect for all your design needs. ✨</p>
+     </div>
+     <div class="relative bg-gradient-to-br from-yellow-500/10 to-red-600/10 backdrop-blur-xl border border-yellow-500/20 rounded-3xl p-12 hover:border-yellow-400/50 transition-all duration-500 transform hover:scale-105 fade-in-up">
+      <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-500"></div><!-- Floating emoji elements -->
+      <div class="absolute -top-4 -left-4 text-6xl animate-bounce" style="animation-delay: 0s;">
+       🎨
+      </div>
+      <div class="absolute -top-4 -right-4 text-5xl animate-pulse" style="animation-delay: 1s;">
+       ✨
+      </div>
+      <div class="relative z-10">
+       <div class="text-center mb-12">
+        <h3 class="text-4xl font-black mb-6"><span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">What's Included:</span></h3>
+       </div>
+       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="group relative bg-gradient-to-br from-yellow-500/20 to-orange-600/20 backdrop-blur-xl border border-yellow-500/30 rounded-2xl p-8 text-center hover:border-yellow-400/60 transition-all duration-500 transform hover:scale-105">
+         <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+         <div class="relative z-10">
+          <div class="text-6xl mb-4">
+           🎯
+          </div>
+          <h4 class="text-2xl font-bold text-yellow-400 mb-3">50+ Premium Templates</h4>
+          <p class="text-gray-200 leading-relaxed">Professional-grade templates for every design need</p>
+         </div>
+        </div>
+        <div class="group relative bg-gradient-to-br from-orange-500/20 to-red-600/20 backdrop-blur-xl border border-orange-500/30 rounded-2xl p-8 text-center hover:border-orange-400/60 transition-all duration-500 transform hover:scale-105">
+         <div class="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+         <div class="relative z-10">
+          <div class="text-6xl mb-4">
+           📱
+          </div>
+          <h4 class="text-2xl font-bold text-orange-400 mb-3">Social Media Pack</h4>
+          <p class="text-gray-200 leading-relaxed">Instagram, Facebook, Twitter, LinkedIn ready designs</p>
+         </div>
+        </div>
+        <div class="group relative bg-gradient-to-br from-red-500/20 to-pink-600/20 backdrop-blur-xl border border-red-500/30 rounded-2xl p-8 text-center hover:border-red-400/60 transition-all duration-500 transform hover:scale-105">
+         <div class="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+         <div class="relative z-10">
+          <div class="text-6xl mb-4">
+           💼
+          </div>
+          <h4 class="text-2xl font-bold text-red-400 mb-3">Business Templates</h4>
+          <p class="text-gray-200 leading-relaxed">Professional business cards, letterheads, presentations</p>
+         </div>
+        </div>
+        <div class="group relative bg-gradient-to-br from-pink-500/20 to-purple-600/20 backdrop-blur-xl border border-pink-500/30 rounded-2xl p-8 text-center hover:border-pink-400/60 transition-all duration-500 transform hover:scale-105">
+         <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+         <div class="relative z-10">
+          <div class="text-6xl mb-4">
+           📊
+          </div>
+          <h4 class="text-2xl font-bold text-pink-400 mb-3">Marketing Materials</h4>
+          <p class="text-gray-200 leading-relaxed">Flyers, brochures, banners, and promotional designs</p>
+         </div>
+        </div>
+        <div class="group relative bg-gradient-to-br from-purple-500/20 to-indigo-600/20 backdrop-blur-xl border border-purple-500/30 rounded-2xl p-8 text-center hover:border-purple-400/60 transition-all duration-500 transform hover:scale-105">
+         <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+         <div class="relative z-10">
+          <div class="text-6xl mb-4">
+           🏷️
+          </div>
+          <h4 class="text-2xl font-bold text-purple-400 mb-3">Brand Identity Kit</h4>
+          <p class="text-gray-200 leading-relaxed">Logo templates, brand guidelines, color palettes</p>
+         </div>
+        </div>
+        <div class="group relative bg-gradient-to-br from-indigo-500/20 to-blue-600/20 backdrop-blur-xl border border-indigo-500/30 rounded-2xl p-8 text-center hover:border-indigo-400/60 transition-all duration-500 transform hover:scale-105">
+         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+         <div class="relative z-10">
+          <div class="text-6xl mb-4">
+           💡
+          </div>
+          <h4 class="text-2xl font-bold text-indigo-400 mb-3">Pro Design Tips</h4>
+          <p class="text-gray-200 leading-relaxed">Exclusive design secrets and professional techniques</p>
+         </div>
+        </div>
+       </div>
+       <div class="text-center mt-12">
+        <div class="inline-flex items-center gap-4 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 backdrop-blur-xl border border-yellow-500/30 rounded-full px-8 py-4"><span class="text-3xl">🎉</span> <span class="text-xl font-bold text-yellow-400">Worth ₹2000+ - Absolutely FREE!</span> <span class="text-3xl">🎉</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Learning Modules Section -->
+  <section id="modules" class="py-20 relative">
+   <div class="container mx-auto px-6">
+    <div class="text-center mb-16 fade-in-up">
+     <h2 class="text-4xl md:text-6xl font-bold mb-4"><span class="ai-gradient bg-clip-text text-transparent">LEARNING MODULES</span></h2>
+     <p class="text-gray-400 text-lg">Comprehensive curriculum for design mastery</p>
+    </div>
+    <div class="max-w-4xl mx-auto space-y-6">
+     <div class="tech-card rounded-2xl p-8 fade-in-up" style="animation-delay: 0.1s">
+      <div class="flex items-start gap-6">
+       <div class="w-16 h-16 neon-border rounded-full flex items-center justify-center flex-shrink-0"><span class="text-cyan-400 text-2xl font-bold">01</span>
+       </div>
+       <div>
+        <h3 class="text-2xl font-bold mb-3 text-cyan-400">FOUNDATION &amp; AI INTEGRATION</h3>
+        <p class="text-gray-400 mb-4">Master Canva fundamentals while learning to integrate AI tools for enhanced productivity and creativity.</p>
+        <ul class="text-sm text-gray-500 space-y-1">
+         <li>• Canva interface mastery</li>
+         <li>• AI tool integration basics</li>
+         <li>• Workflow optimization</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="tech-card rounded-2xl p-8 fade-in-up" style="animation-delay: 0.2s">
+      <div class="flex items-start gap-6">
+       <div class="w-16 h-16 neon-border rounded-full flex items-center justify-center flex-shrink-0"><span class="text-purple-400 text-2xl font-bold">02</span>
+       </div>
+       <div>
+        <h3 class="text-2xl font-bold mb-3 text-purple-400">ADVANCED DESIGN TECHNIQUES</h3>
+        <p class="text-gray-400 mb-4">Explore professional design principles, typography mastery, and color theory for impactful visuals.</p>
+        <ul class="text-sm text-gray-500 space-y-1">
+         <li>• Professional typography</li>
+         <li>• Advanced color theory</li>
+         <li>• Composition mastery</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="tech-card rounded-2xl p-8 fade-in-up" style="animation-delay: 0.3s">
+      <div class="flex items-start gap-6">
+       <div class="w-16 h-16 neon-border rounded-full flex items-center justify-center flex-shrink-0"><span class="text-pink-400 text-2xl font-bold">03</span>
+       </div>
+       <div>
+        <h3 class="text-2xl font-bold mb-3 text-pink-400">BRAND IDENTITY &amp; LOGO DESIGN</h3>
+        <p class="text-gray-400 mb-4">Create compelling brand identities and professional logos using advanced Canva features and AI assistance.</p>
+        <ul class="text-sm text-gray-500 space-y-1">
+         <li>• Brand strategy development</li>
+         <li>• Logo design mastery</li>
+         <li>• Brand guideline creation</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="tech-card rounded-2xl p-8 fade-in-up" style="animation-delay: 0.4s">
+      <div class="flex items-start gap-6">
+       <div class="w-16 h-16 neon-border rounded-full flex items-center justify-center flex-shrink-0"><span class="text-yellow-400 text-2xl font-bold">04</span>
+       </div>
+       <div>
+        <h3 class="text-2xl font-bold mb-3 text-yellow-400">SOCIAL MEDIA &amp; MARKETING DESIGN</h3>
+        <p class="text-gray-400 mb-4">Design high-converting social media content and marketing materials optimized for each platform.</p>
+        <ul class="text-sm text-gray-500 space-y-1">
+         <li>• Platform-specific optimization</li>
+         <li>• Engagement-driven design</li>
+         <li>• Marketing psychology</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="tech-card rounded-2xl p-8 fade-in-up" style="animation-delay: 0.5s">
+      <div class="flex items-start gap-6">
+       <div class="w-16 h-16 neon-border rounded-full flex items-center justify-center flex-shrink-0"><span class="text-green-400 text-2xl font-bold">05</span>
+       </div>
+       <div>
+        <h3 class="text-2xl font-bold mb-3 text-green-400">VIDEO EDITING &amp; MOTION GRAPHICS</h3>
+        <p class="text-gray-400 mb-4">Master Canva's video capabilities and create stunning motion graphics with AI-enhanced workflows.</p>
+        <ul class="text-sm text-gray-500 space-y-1">
+         <li>• Video editing mastery</li>
+         <li>• Motion graphics creation</li>
+         <li>• AI-powered animations</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="tech-card rounded-2xl p-8 fade-in-up" style="animation-delay: 0.6s">
+      <div class="flex items-start gap-6">
+       <div class="w-16 h-16 neon-border rounded-full flex items-center justify-center flex-shrink-0"><span class="text-red-400 text-2xl font-bold">06</span>
+       </div>
+       <div>
+        <h3 class="text-2xl font-bold mb-3 text-red-400">AUTOMATION &amp; SCALING</h3>
+        <p class="text-gray-400 mb-4">Learn advanced automation techniques and scaling strategies for professional design workflows.</p>
+        <ul class="text-sm text-gray-500 space-y-1">
+         <li>• Batch processing techniques</li>
+         <li>• Template system creation</li>
+         <li>• Workflow automation</li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Instructor Section -->
+  <section id="instructor" class="py-20 relative overflow-hidden"><!-- Modern Tech Background -->
+   <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-black"></div>
+   <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=" 100 height="100" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" %3e%3cg fill="none" fill-rule="evenodd" fill-opacity="0.02" %3e%3cpath d="M50 50c0-13.8-11.2-25-25-25s-25 11.2-25 25 11.2 25 25 25 25-11.2 25-25zm25 0c0-13.8-11.2-25-25-25s-25 11.2-25 25 11.2 25 25 25 25-11.2 25-25z" %3e%3c g%3e%3c svg%3e)]></div><!-- Floating Tech Elements -->
+   <div class="absolute top-20 left-20 w-32 h-32 border-2 border-blue-500/20 rounded-lg opacity-30 animate-pulse transform rotate-12" style="animation-delay: 0s; animation-duration: 4s;"></div>
+   <div class="absolute top-40 right-24 w-24 h-24 border-2 border-purple-500/20 rounded-full opacity-30 animate-bounce" style="animation-delay: 1s; animation-duration: 5s;"></div>
+   <div class="absolute bottom-40 left-24 w-20 h-20 border-2 border-cyan-500/20 rounded-lg opacity-30 animate-pulse transform -rotate-12" style="animation-delay: 2s; animation-duration: 3s;"></div>
+   <div class="absolute bottom-20 right-20 w-28 h-28 border-2 border-green-500/20 rounded-full opacity-30 animate-bounce" style="animation-delay: 3s; animation-duration: 6s;"></div>
+   <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-7xl mx-auto"><!-- Section Header -->
+     <div class="text-center mb-20 fade-in-up">
+      <div class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-bold mb-8 shadow-2xl">
+       👨‍🏫 MEET YOUR INSTRUCTOR
+      </div>
+      <h2 class="text-5xl md:text-7xl font-black mb-6"><span class="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">Expert</span> <span class="text-white"> Guidance</span></h2>
+      <p class="text-xl text-gray-400 max-w-3xl mx-auto">Learn from an industry professional with proven expertise in design and AI integration</p>
+     </div><!-- Main Content Card -->
+     <div class="relative bg-gradient-to-br from-gray-800/50 to-slate-900/50 backdrop-blur-xl border border-gray-700/50 rounded-3xl overflow-hidden fade-in-up">
+      <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-cyan-500/5"></div>
+      <div class="relative z-10 p-12">
+       <div class="grid lg:grid-cols-5 gap-12 items-center"><!-- Profile Section -->
+        <div class="lg:col-span-2 text-center">
+         <div class="relative inline-block mb-8"><!-- Main Avatar -->
+          <div class="w-80 h-80 mx-auto relative">
+           <div class="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-500 rounded-3xl animate-pulse"></div>
+           <div class="absolute inset-2 bg-gradient-to-br from-gray-800 to-slate-900 rounded-3xl flex items-center justify-center">
+            <div class="w-64 h-64 bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl flex items-center justify-center shadow-2xl">
+             <svg class="w-32 h-32 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+             </svg>
+            </div>
+           </div>
+          </div><!-- Floating Tech Icons -->
+          <div class="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center animate-bounce" style="animation-delay: 0s;">
+           <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+           </svg>
+          </div>
+          <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center animate-pulse" style="animation-delay: 1s;">
+           <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+          </div>
+          <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center animate-bounce" style="animation-delay: 2s;">
+           <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" />
+           </svg>
+          </div>
+          <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center animate-pulse" style="animation-delay: 3s;">
+           <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM12 13.5l3.5 2.5L12 18.5 8.5 16l3.5-2.5z" />
+           </svg>
+          </div>
+         </div><!-- Name & Title -->
+         <div class="space-y-4">
+          <h3 id="instructor-name" class="text-4xl font-black text-white">Gaurav Kurmi</h3>
+          <p id="instructor-title" class="text-xl bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent font-bold">Senior Graphic Designer &amp; AI Tools Expert</p>
+          <div class="flex items-center justify-center gap-2 text-gray-400">
+           <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+           </svg><span>India</span>
+          </div>
+         </div>
+        </div><!-- Details Section -->
+        <div class="lg:col-span-3 space-y-8"><!-- Bio -->
+         <div class="space-y-6">
+          <h4 class="text-2xl font-bold text-white mb-4">About Your Instructor</h4>
+          <div class="space-y-4 text-gray-300 text-lg leading-relaxed">
+           <p>With <span class="text-blue-400 font-bold">3+ years of professional experience</span> in graphic design and video editing, Gaurav has established himself as a leading expert in AI-powered creative workflows.</p>
+           <p>As a <span class="text-purple-400 font-bold">Senior Graphic Designer</span> and <span class="text-cyan-400 font-bold">Video Editor</span>, he has successfully trained over <span class="text-green-400 font-bold">1000+ students</span> in modern design techniques.</p>
+           <p>Gaurav specializes in integrating <span class="text-pink-400 font-bold">AI tools with traditional design processes</span>, helping creators achieve professional results with maximum efficiency.</p>
+          </div>
+         </div><!-- Expertise Areas -->
+         <div>
+          <h4 class="text-xl font-bold text-white mb-6">Areas of Expertise</h4>
+          <div class="grid grid-cols-2 gap-4">
+           <div class="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20">
+            <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+             <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+             </svg>
+            </div><span class="text-white font-semibold">Graphic Design</span>
+           </div>
+           <div class="flex items-center gap-3 p-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl border border-purple-500/20">
+            <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+             <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+             </svg>
+            </div><span class="text-white font-semibold">Video Editing</span>
+           </div>
+           <div class="flex items-center gap-3 p-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl border border-cyan-500/20">
+            <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center">
+             <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M13 10V3L4 14h7v7l9-11h-7z" />
+             </svg>
+            </div><span class="text-white font-semibold">AI Integration</span>
+           </div>
+           <div class="flex items-center gap-3 p-4 bg-gradient-to-r from-green-500/10 to-teal-500/10 rounded-xl border border-green-500/20">
+            <div class="w-10 h-10 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center">
+             <svg class="w-5 h-5 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+             </svg>
+            </div><span class="text-white font-semibold">Brand Design</span>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Stats Section -->
+       <div class="mt-12 pt-8 border-t border-gray-700/50">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+         <div class="text-center group">
+          <div class="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+           <svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+           </svg>
+          </div>
+          <div class="text-3xl font-black text-blue-400 mb-2">
+           3+
+          </div>
+          <div class="text-sm text-gray-400 font-semibold">
+           Years Experience
+          </div>
+         </div>
+         <div class="text-center group">
+          <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+           <svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+           </svg>
+          </div>
+          <div class="text-3xl font-black text-purple-400 mb-2">
+           1000+
+          </div>
+          <div class="text-sm text-gray-400 font-semibold">
+           Students Trained
+          </div>
+         </div>
+         <div class="text-center group">
+          <div class="w-20 h-20 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+           <svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 20 20"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+           </svg>
+          </div>
+          <div class="text-3xl font-black text-cyan-400 mb-2">
+           50+
+          </div>
+          <div class="text-sm text-gray-400 font-semibold">
+           Projects Completed
+          </div>
+         </div>
+         <div class="text-center group">
+          <div class="w-20 h-20 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+           <svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+           </svg>
+          </div>
+          <div class="text-3xl font-black text-green-400 mb-2">
+           98%
+          </div>
+          <div class="text-sm text-gray-400 font-semibold">
+           Satisfaction Rate
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Pricing Section -->
+  <section id="pricing" class="py-20 relative overflow-hidden"><!-- Premium Dark Background -->
+   <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
+   <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=" 120 height="120" viewbox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" %3e%3cg fill="none" fill-rule="evenodd" fill-opacity="0.02" %3e%3cpath d="M60 60c0-16.6-13.4-30-30-30s-30 13.4-30 30 13.4 30 30 30 30-13.4 30-30zm30 0c0-16.6-13.4-30-30-30s-30 13.4-30 30 13.4 30 30 30 30-13.4 30-30z" %3e%3c g%3e%3c svg%3e)]></div><!-- Floating Premium Elements -->
+   <div class="absolute top-20 left-20 w-40 h-40 border-2 border-gold-500/20 rounded-full opacity-30 animate-pulse" style="animation-delay: 0s; animation-duration: 6s;"></div>
+   <div class="absolute top-40 right-24 w-32 h-32 border-2 border-yellow-500/20 rounded-lg opacity-30 animate-bounce transform rotate-12" style="animation-delay: 2s; animation-duration: 8s;"></div>
+   <div class="absolute bottom-40 left-24 w-24 h-24 border-2 border-orange-500/20 rounded-full opacity-30 animate-pulse" style="animation-delay: 4s; animation-duration: 5s;"></div>
+   <div class="absolute bottom-20 right-20 w-36 h-36 border-2 border-amber-500/20 rounded-lg opacity-30 animate-bounce transform -rotate-12" style="animation-delay: 1s; animation-duration: 7s;"></div>
+   <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-7xl mx-auto"><!-- Section Header -->
+     <div class="text-center mb-20 fade-in-up">
+      <div class="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-600 to-orange-600 text-white px-6 py-3 rounded-full text-sm font-bold mb-8 shadow-2xl animate-pulse">
+       💰 SPECIAL LAUNCH OFFER
+      </div>
+      <h2 class="text-5xl md:text-7xl font-black mb-6"><span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">Investment</span> <span class="text-white"> in Your Future</span></h2>
+      <p class="text-xl text-gray-400 max-w-3xl mx-auto">Transform your creative career with lifetime access to professional design mastery</p>
+     </div><!-- Pricing Cards Container -->
+     <div class="grid lg:grid-cols-3 gap-8 mb-16"><!-- Regular Price Card (Crossed Out) -->
+      <div class="relative bg-gradient-to-br from-gray-800/30 to-slate-900/30 backdrop-blur-xl border border-gray-700/30 rounded-3xl p-8 opacity-60 fade-in-up" style="animation-delay: 0.1s">
+       <div class="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent rounded-3xl"></div>
+       <div class="relative z-10 text-center">
+        <div class="mb-6">
+         <h3 class="text-xl font-bold text-gray-400 mb-2">Regular Price</h3>
+         <div class="relative">
+          <div class="text-5xl font-black text-gray-500 line-through">
+           ₹999
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center">
+           <div class="w-32 h-1 bg-red-500 transform rotate-12"></div>
+          </div>
+         </div>
+        </div>
+        <div class="space-y-3 text-gray-500">
+         <div class="flex items-center gap-3">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg><span>Standard Access</span>
+         </div>
+         <div class="flex items-center gap-3">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg><span>No Bonus Content</span>
+         </div>
+         <div class="flex items-center gap-3">
+          <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg><span>Limited Support</span>
+         </div>
+        </div>
+       </div>
+      </div><!-- Special Offer Card (Main) -->
+      <div class="relative bg-gradient-to-br from-yellow-500/20 to-orange-600/20 backdrop-blur-xl border-2 border-yellow-500/50 rounded-3xl p-8 transform scale-110 shadow-2xl fade-in-up" style="animation-delay: 0.2s">
+       <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent rounded-3xl"></div><!-- Popular Badge -->
+       <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+        <div class="bg-gradient-to-r from-yellow-500 to-orange-500 text-black px-6 py-2 rounded-full text-sm font-bold shadow-lg animate-pulse">
+         🔥 MOST POPULAR
+        </div>
+       </div><!-- Discount Badge -->
+       <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm animate-bounce shadow-2xl">
+        50% OFF
+       </div>
+       <div class="relative z-10 text-center">
+        <div class="mb-8">
+         <h3 class="text-2xl font-bold text-yellow-400 mb-4">Launch Special</h3>
+         <div id="course-price" class="text-7xl font-black bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent mb-4 animate-pulse">
+          ₹499
+         </div>
+         <div class="text-lg text-gray-300"><span class="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent font-bold">One-time payment</span> <span class="mx-2">•</span> <span class="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent font-bold">Lifetime access</span>
+         </div>
+        </div>
+        <div class="space-y-4 mb-8 text-left">
+         <div class="flex items-center gap-3 p-3 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-xl">
+          <div class="w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center">
+           <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+           </svg>
+          </div><span class="text-white font-semibold">6 Comprehensive Modules</span>
+         </div>
+         <div class="flex items-center gap-3 p-3 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-xl">
+          <div class="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+           <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+           </svg>
+          </div><span class="text-white font-semibold">50+ Premium Templates</span>
+         </div>
+         <div class="flex items-center gap-3 p-3 bg-gradient-to-r from-red-500/10 to-pink-500/10 rounded-xl">
+          <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg flex items-center justify-center">
+           <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+           </svg>
+          </div><span class="text-white font-semibold">AI Integration Training</span>
+         </div>
+         <div class="flex items-center gap-3 p-3 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-xl">
+          <div class="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg flex items-center justify-center">
+           <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+           </svg>
+          </div><span class="text-white font-semibold">Certificate of Completion</span>
+         </div>
+         <div class="flex items-center gap-3 p-3 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-xl">
+          <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center">
+           <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+           </svg>
+          </div><span class="text-white font-semibold">Community Access</span>
+         </div>
+        </div><a href="https://forms.gle/ZaV8FR681rmBHscM7" target="_blank" rel="noopener noreferrer"> <button id="enroll-button" class="group relative w-full px-8 py-4 text-xl font-bold text-black bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl shadow-2xl hover:shadow-yellow-500/25 transform hover:scale-105 transition-all duration-300 overflow-hidden"> <span class="relative z-10 flex items-center justify-center gap-3">
+           <svg class="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" fill="currentColor" viewbox="0 0 20 20"><path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" /> <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clip-rule="evenodd" />
+           </svg> Enroll Now - Save 50% </span>
+          <div class="absolute inset-0 bg-gradient-to-r from-orange-500 to-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div></button> </a>
+       </div>
+      </div><!-- Value Comparison Card -->
+      <div class="relative bg-gradient-to-br from-gray-800/30 to-slate-900/30 backdrop-blur-xl border border-gray-700/30 rounded-3xl p-8 fade-in-up" style="animation-delay: 0.3s">
+       <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent rounded-3xl"></div>
+       <div class="relative z-10 text-center">
+        <div class="mb-6">
+         <h3 class="text-xl font-bold text-green-400 mb-2">Total Value</h3>
+         <div class="text-5xl font-black text-green-400">
+          ₹2500+
+         </div>
+         <div class="text-sm text-gray-400 mt-2">
+          If purchased separately
+         </div>
+        </div>
+        <div class="space-y-3 text-gray-300">
+         <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg><span>Course: ₹999</span>
+         </div>
+         <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg><span>Templates: ₹799</span>
+         </div>
+         <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg><span>Support: ₹499</span>
+         </div>
+         <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-green-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+          </svg><span>Updates: ₹299</span>
+         </div>
+        </div>
+        <div class="mt-6 p-4 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-xl border border-green-500/30">
+         <div class="text-2xl font-bold text-green-400">
+          You Save ₹2001!
+         </div>
+         <div class="text-sm text-gray-300">
+          80% Discount
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Trust Indicators -->
+     <div class="text-center fade-in-up" style="animation-delay: 0.4s">
+      <div class="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-400">
+       <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+        </svg><span>Secure Payment</span>
+       </div>
+       <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg><span>Instant Access</span>
+       </div>
+       <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewbox="0 0 20 20"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg><span>30-Day Money Back Guarantee</span>
+       </div>
+       <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-purple-400" fill="currentColor" viewbox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+        </svg><span>1000+ Happy Students</span>
+       </div>
+      </div><!-- Urgency Timer -->
+      <div class="mt-12 p-6 bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-xl border border-red-500/30 rounded-2xl max-w-md mx-auto">
+       <div class="text-red-400 font-bold mb-2">
+        ⏰ Limited Time Offer
+       </div>
+       <div class="text-white text-lg">
+        This special price won't last forever!
+       </div>
+       <div class="text-sm text-gray-300 mt-2">
+        Join now and secure your spot at 50% off
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section class="py-20 relative bg-gray-900">
+   <div class="absolute inset-0 bg-gradient-to-br from-gray-800 via-black to-gray-900"></div>
+   <div class="container mx-auto px-6 relative z-10">
+    <div class="max-w-4xl mx-auto text-center fade-in-up">
+     <h2 class="text-4xl md:text-6xl font-bold mb-6"><span class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">READY TO TRANSFORM?</span></h2>
+     <p class="text-gray-400 text-xl mb-12">Join the future of design with AI-powered creativity</p>
+     <div class="flex flex-col sm:flex-row gap-6 justify-center items-center"><a href="https://wa.me/8433415139?text=I%20want%20to%20join%20the%20Canva%20Mastery%20Course" target="_blank" rel="noopener noreferrer"> <button class="cyber-button px-10 py-4 rounded-lg font-bold text-lg flex items-center gap-3">
+        <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg> CONNECT ON WHATSAPP </button> </a>
+     </div>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer class="py-12 relative bg-black">
+   <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
+   <div class="container mx-auto px-6 relative z-10">
+    <div class="flex flex-col items-center text-center">
+     <div class="flex items-center space-x-4 mb-6">
+      <div class="w-16 h-16 neon-border rounded-lg flex items-center justify-center">
+       <svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" />
+       </svg>
+      </div>
+      <div class="text-left">
+       <div class="text-2xl font-bold text-white glitch-text">
+        ADOLEARN
+       </div>
+       <div class="text-sm text-gray-400">
+        BY GAURAV KURMI
+       </div>
+      </div>
+     </div>
+     <p id="footer-tagline" class="text-lg text-gray-300 mb-6 max-w-2xl">Empowering creators with next-generation design skills through AI-powered learning experiences</p>
+     <div class="border-t border-gray-600 pt-6 w-full">
+      <p id="footer-copyright" class="text-sm text-gray-400">© 2025 Canva Mastery Course. All rights reserved. | Adolearn by Gaurav Kurmi</p>
+     </div>
+    </div>
+   </div>
+  </footer><!-- Scroll to Top Button --> <button id="scrollToTop" class="fixed bottom-6 right-6 z-50 opacity-0 transition-all duration-300">
+   <div class="w-14 h-14 glow-border rounded-full flex items-center justify-center glass-card hover:scale-110 transition-transform duration-300">
+    <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+   </div></button>
+  <script>
+        const defaultConfig = {
+            hero_headline: "Master Canva with AI-Powered Design",
+            hero_tagline: "Unlock the future of creative design with cutting-edge AI tools and advanced Canva techniques",
+            cta_button_text: "Start Your Journey",
+            course_price: "₹499",
+            enroll_button_text: "Enroll Now",
+            instructor_name: "Gaurav Kurmi",
+            instructor_title: "Senior Graphic Designer & AI Tools Expert",
+            footer_tagline: "Empowering creators with next-generation design skills through AI-powered learning experiences",
+            footer_copyright: "© 2025 Canva Mastery Course. All rights reserved. | Adolearn by Gaurav Kurmi",
+            background_color: "#0a0a0a",
+            surface_color: "#001428",
+            text_color: "#ffffff",
+            primary_action_color: "#00ffff",
+            secondary_action_color: "#ff00ff",
+            font_family: "system-ui, -apple-system, sans-serif",
+            font_size: 16
+        };
 
-    <script>
-        // Create particle system
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
+        async function onConfigChange(config) {
+            const customFont = config.font_family || defaultConfig.font_family;
+            const baseFontStack = 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace';
+            const fontFamily = `${customFont}, ${baseFontStack}`;
+            const baseSize = config.font_size || defaultConfig.font_size;
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 5) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Mobile menu functionality
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            document.body.style.fontFamily = fontFamily;
             
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                mobileMenuBtn.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
-            } else {
-                mobileMenu.classList.add('hidden');
-                mobileMenuBtn.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>';
-            }
-        }
-
-        // Stats counter animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('[data-target]');
-            
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                const increment = target / 100;
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target.toLocaleString();
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current).toLocaleString();
-                    }
-                }, 20);
-            });
-        }
-
-        // Countdown timer
-        function startCountdown() {
-            const countdownElement = document.getElementById('countdown');
-            let hours = 23;
-            let minutes = 59;
-            let seconds = 45;
-            
-            setInterval(() => {
-                seconds--;
-                if (seconds < 0) {
-                    seconds = 59;
-                    minutes--;
-                    if (minutes < 0) {
-                        minutes = 59;
-                        hours--;
-                        if (hours < 0) {
-                            hours = 23;
-                        }
-                    }
-                }
-                
-                const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                countdownElement.textContent = formattedTime;
-            }, 1000);
-        }
-
-        // FAQ Toggle
-        function toggleFAQ(num) {
-            const faq = document.getElementById(`faq${num}`);
-            const button = faq.previousElementSibling.querySelector('span');
-            
-            if (faq.classList.contains('hidden')) {
-                faq.classList.remove('hidden');
-                button.textContent = '−';
-            } else {
-                faq.classList.add('hidden');
-                button.textContent = '+';
-            }
-        }
-
-        // Scroll reveal animation
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.scroll-reveal');
-            
-            reveals.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('revealed');
-                }
-            });
-        }
-
-        // Click sound and star sprinkle effect
-        function playClickSound() {
-            // Create audio context for click sound
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-            oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.1);
-            
-            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-            
-            oscillator.start(audioContext.currentTime);
-            oscillator.stop(audioContext.currentTime + 0.1);
-        }
-        
-        function createStarSprinkle(x, y) {
-            const starContainer = document.getElementById('starContainer');
-            const starCount = 12;
-            
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.innerHTML = '⭐';
-                
-                // Random position around click point
-                const offsetX = (Math.random() - 0.5) * 200;
-                const offsetY = (Math.random() - 0.5) * 100;
-                
-                star.style.left = (x + offsetX) + 'px';
-                star.style.top = (y + offsetY) + 'px';
-                star.style.animationDelay = (Math.random() * 0.5) + 's';
-                star.style.fontSize = (Math.random() * 10 + 15) + 'px';
-                
-                starContainer.appendChild(star);
-                
-                // Remove star after animation
-                setTimeout(() => {
-                    if (star.parentNode) {
-                        star.parentNode.removeChild(star);
-                    }
-                }, 2000);
-            }
-        }
-        
-        function handleButtonClick(event) {
-            playClickSound();
-            createStarSprinkle(event.clientX, event.clientY);
-        }
-        
-        // Simple download function for templates
-        function downloadEbook() {
-            // Create notification
-            const notification = document.createElement('div');
-            notification.className = 'fixed top-4 right-4 glass-card text-white px-6 py-4 rounded-lg shadow-lg z-50 fade-in-up';
-            notification.innerHTML = `
-                <div class="flex items-center space-x-3">
-                    <span class="text-2xl">🎁</span>
-                    <div>
-                        <div class="font-bold">Templates Available!</div>
-                        <div class="text-sm">Join the course to get templates</div>
-                    </div>
-                </div>
+            document.getElementById('hero-headline').innerHTML = `
+                <span class="ai-gradient bg-clip-text text-transparent">${(config.hero_headline || defaultConfig.hero_headline).split(' ').slice(0, -2).join(' ')}</span><br>
+                <span class="text-cyan-400 glitch-text">${(config.hero_headline || defaultConfig.hero_headline).split(' ').slice(-2).join(' ')}</span>
             `;
-            document.body.appendChild(notification);
-            setTimeout(() => notification.remove(), 3000);
+            document.getElementById('hero-headline').style.fontSize = `${baseSize * 3}px`;
+            
+            document.getElementById('hero-tagline').textContent = config.hero_tagline || defaultConfig.hero_tagline;
+            document.getElementById('hero-tagline').style.fontSize = `${baseSize * 1.25}px`;
+            
+            document.getElementById('cta-button').textContent = config.cta_button_text || defaultConfig.cta_button_text;
+            document.getElementById('cta-button').style.fontSize = `${baseSize * 1.125}px`;
+            
+            document.getElementById('course-price').textContent = config.course_price || defaultConfig.course_price;
+            document.getElementById('course-price').style.fontSize = `${baseSize * 4.375}px`;
+            
+            document.getElementById('enroll-button').textContent = config.enroll_button_text || defaultConfig.enroll_button_text;
+            document.getElementById('enroll-button').style.fontSize = `${baseSize * 1.25}px`;
+            
+            document.getElementById('instructor-name').textContent = config.instructor_name || defaultConfig.instructor_name;
+            document.getElementById('instructor-name').style.fontSize = `${baseSize * 2.5}px`;
+            
+            document.getElementById('instructor-title').textContent = config.instructor_title || defaultConfig.instructor_title;
+            document.getElementById('instructor-title').style.fontSize = `${baseSize * 1.25}px`;
+            
+            document.getElementById('footer-tagline').textContent = config.footer_tagline || defaultConfig.footer_tagline;
+            document.getElementById('footer-tagline').style.fontSize = `${baseSize * 1.125}px`;
+            
+            document.getElementById('footer-copyright').textContent = config.footer_copyright || defaultConfig.footer_copyright;
+            document.getElementById('footer-copyright').style.fontSize = `${baseSize * 0.875}px`;
+            
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+            
+            document.body.style.backgroundColor = backgroundColor;
+            document.body.style.color = textColor;
+            
+            const techCards = document.querySelectorAll('.tech-card');
+            techCards.forEach(card => {
+                card.style.backgroundColor = surfaceColor;
+                card.style.borderColor = `rgba(${parseInt(primaryActionColor.slice(1, 3), 16)}, ${parseInt(primaryActionColor.slice(3, 5), 16)}, ${parseInt(primaryActionColor.slice(5, 7), 16)}, 0.3)`;
+            });
+            
+            const neonBorders = document.querySelectorAll('.neon-border');
+            neonBorders.forEach(border => {
+                border.style.borderColor = primaryActionColor;
+                border.style.boxShadow = `0 0 20px ${primaryActionColor}, inset 0 0 20px rgba(${parseInt(primaryActionColor.slice(1, 3), 16)}, ${parseInt(primaryActionColor.slice(3, 5), 16)}, ${parseInt(primaryActionColor.slice(5, 7), 16)}, 0.1)`;
+            });
         }
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Create particles
-            createParticles();
-            
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
-            }
-            
-            // Start countdown
-            startCountdown();
-            
-            // Scroll reveal
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll(); // Initial check
-            
-            // Animate counters when they come into view
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            });
-            
-            const statsSection = document.querySelector('[data-target]');
-            if (statsSection) {
-                observer.observe(statsSection.closest('section'));
-            }
-            
-            // Add click effects to all buttons
-            document.querySelectorAll('.modern-btn, .modern-btn-secondary, button').forEach(button => {
-                button.addEventListener('click', handleButtonClick);
-            });
-            
-            // Add smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                        
-                        // Close mobile menu if open
-                        const mobileMenu = document.getElementById('mobileMenu');
-                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                            toggleMobileMenu();
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities: (config) => ({
+                    recolorables: [
+                        {
+                            get: () => config.background_color || defaultConfig.background_color,
+                            set: (value) => {
+                                config.background_color = value;
+                                window.elementSdk.setConfig({ background_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.surface_color || defaultConfig.surface_color,
+                            set: (value) => {
+                                config.surface_color = value;
+                                window.elementSdk.setConfig({ surface_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.text_color || defaultConfig.text_color,
+                            set: (value) => {
+                                config.text_color = value;
+                                window.elementSdk.setConfig({ text_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                            set: (value) => {
+                                config.primary_action_color = value;
+                                window.elementSdk.setConfig({ primary_action_color: value });
+                            }
+                        },
+                        {
+                            get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                            set: (value) => {
+                                config.secondary_action_color = value;
+                                window.elementSdk.setConfig({ secondary_action_color: value });
+                            }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => config.font_family || defaultConfig.font_family,
+                        set: (value) => {
+                            config.font_family = value;
+                            window.elementSdk.setConfig({ font_family: value });
+                        }
+                    },
+                    fontSizeable: {
+                        get: () => config.font_size || defaultConfig.font_size,
+                        set: (value) => {
+                            config.font_size = value;
+                            window.elementSdk.setConfig({ font_size: value });
                         }
                     }
-                });
+                }),
+                mapToEditPanelValues: (config) => new Map([
+                    ["hero_headline", config.hero_headline || defaultConfig.hero_headline],
+                    ["hero_tagline", config.hero_tagline || defaultConfig.hero_tagline],
+                    ["cta_button_text", config.cta_button_text || defaultConfig.cta_button_text],
+                    ["course_price", config.course_price || defaultConfig.course_price],
+                    ["enroll_button_text", config.enroll_button_text || defaultConfig.enroll_button_text],
+                    ["instructor_name", config.instructor_name || defaultConfig.instructor_name],
+                    ["instructor_title", config.instructor_title || defaultConfig.instructor_title],
+                    ["footer_tagline", config.footer_tagline || defaultConfig.footer_tagline],
+                    ["footer_copyright", config.footer_copyright || defaultConfig.footer_copyright]
+                ])
+            });
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.opacity = '1';
+                scrollToTopBtn.style.visibility = 'visible';
+            } else {
+                scrollToTopBtn.style.opacity = '0';
+                scrollToTopBtn.style.visibility = 'hidden';
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9949bc4f836e5959',t:'MTc2MTQ3OTQyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99823ff4e68459d8',t:'MTc2MjA3MjAxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
